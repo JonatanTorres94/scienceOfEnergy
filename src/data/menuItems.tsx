@@ -9,6 +9,6 @@ export const menuItems: MenuItem[] = [
     {
         name: 'Libros de los VM',
         icon: 'star-sharp',
-        component: 'Animation101'
+        component: 'BooksOfTheVM'
     }
 ]

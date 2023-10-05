@@ -8,6 +8,9 @@ import SplashScreen from '../screens/SplashScreen';
 import { TheThreeFactors } from '../screens/TheThreeFactors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors } from '../theme/colors';
+import { BooksOfTheVM } from '../screens/BooksOfTheVM';
+import {ChatScreen} from '../screens/ChatScreen';
+import { ConfigScreen } from '../screens/ConfigScreen';
 
 // ... (otros componentes e importaciones)
 
@@ -39,7 +42,7 @@ export const AppNavigation = () => {
                         )
                     }}
                 />
-                <Tab.Screen name='Chat' component={StackNavigation}
+                <Tab.Screen name='Chat' component={ChatScreen}
 
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -47,7 +50,7 @@ export const AppNavigation = () => {
                         )
                     }}
                 />
-                <Tab.Screen name='Configurations' component={StackNavigation}
+                <Tab.Screen name='Configurations' component={ConfigScreen}
 
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -75,6 +78,7 @@ export const HomeStack = () => {
         <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
             <Stack.Screen name='Home' component={HomeScreen} />
             <Stack.Screen name='TheThreeFactors' component={TheThreeFactors} />
+            <Stack.Screen name='BooksOfTheVM' component={BooksOfTheVM} />
         </Stack.Navigator>
     );
 }
