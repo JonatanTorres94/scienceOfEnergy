@@ -8,5 +8,6 @@ export interface MenuItem {
 
 export interface BooksItems{
     name: string,
-    cover: ImageSourcePropType
+    cover: ImageSourcePropType,
+    description ?: string
 }

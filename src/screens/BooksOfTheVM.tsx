@@ -17,7 +17,7 @@ export const BooksOfTheVM = () => {
             <View style={{  alignContent:'center', marginRight:80}}>
                 <Carousel
                     data={BooksVM}
-                    renderItem={ ({item}) => <PortBooks name={item.name} cover={item.cover} />}
+                    renderItem={ ({item}) => <PortBooks name={item.name} cover={item.cover} description={item.description}/>}
                     sliderWidth={windowsWWith}
                     itemWidth={300}
                 />

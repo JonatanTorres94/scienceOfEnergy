@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "./colors";
 
 
 export const styles = StyleSheet.create({
@@ -126,5 +127,69 @@ export const styles = StyleSheet.create({
       sendIcon: {
         marginLeft: 10,
       },
+
+      //MODAL ALERT
     
+      alertButton: {
+        backgroundColor: 'blue',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+      },
+      buttonText: {
+        fontSize: 18,
+        color: 'white',
+      },
+      modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      },
+      modalContent: {
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 8,
+        alignItems: 'center',
+      },
+      modalTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color: 'black'
+      },
+      modalMessage: {
+        fontSize: 16,
+        marginBottom: 20,
+        color: colors.text
+      },
+      modalButton: {
+        backgroundColor: 'blue',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+      },
+
+
+      //Config
+      titleConfig:{
+        fontSize:20,
+        fontWeight: '700',
+        marginHorizontal: 20,
+        marginTop:13,
+        color:colors.titleText
+      },
+      boxText:{
+        marginBottom:15,
+        margin: 15
+      },
+      varOption:{
+        fontSize: 18,
+        color: colors.text
+      },
+      itemConfig:{
+        flexDirection:'row',
+        marginVertical: 5,
+        alignItems:'center'
+      }
 });

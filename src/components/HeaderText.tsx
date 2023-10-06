@@ -18,7 +18,7 @@ export const HeaderText = ({title}:Props) => {
 
     return (
         <View style={{ marginTop: top + 30, marginBottom: bottom + 30, alignSelf: 'center' }}>
-            <Text style={{...styles.title, color: colors.text}}> {title} </Text>
+            <Text style={{...styles.title, color: colors.titleText}}> {title} </Text>
         </View>
     )
 }
