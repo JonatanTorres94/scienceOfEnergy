@@ -10,7 +10,8 @@ export const colors = {
     text: 'rgba(83,39,193,0.9)',
     titleText: 'black',
     bgcConfig: '#353843',
-    boxConfigColor: 'rgba(232,235,238,0.6)'
+    boxConfigColor: 'rgba(232,235,238,0.6)',
+    backgroundPrimary: 'white'
 }
 
 // colors: {

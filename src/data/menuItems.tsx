@@ -27,14 +27,14 @@ export const menuItems: MenuItem[] = [
         component: 'BooksOfTheVM'
     },
     {
-        name: '....',
+        name: 'SlidesScreen',
         icon: 'star-sharp',
-        component: 'BooksOfTheVM'
+        component: 'SlidesScreen'
     },
     {
-        name: '.....',
+        name: 'DailyScreen',
         icon: 'star-sharp',
-        component: 'BooksOfTheVM'
+        component: 'DailyScreen'
     },
     {
         name: '...',

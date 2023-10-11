@@ -11,7 +11,9 @@ import { colors } from '../theme/colors';
 import { BooksOfTheVM } from '../screens/BooksOfTheVM';
 import {ChatScreen} from '../screens/ChatScreen';
 import { ConfigScreen } from '../screens/ConfigScreen';
-import { DetailScreen } from '../screens/DetailScreen';
+import { SlidesScreen } from '../screens/SlidesScreen';
+import { DailyPractices } from '../screens/DailyPractices';
+
 
 // ... (otros componentes e importaciones)
 
@@ -80,7 +82,8 @@ export const HomeStack = () => {
             <Stack.Screen name='Home' component={HomeScreen} />
             <Stack.Screen name='TheThreeFactors' component={TheThreeFactors} />
             <Stack.Screen name='BooksOfTheVM' component={BooksOfTheVM} />
-            <Stack.Screen name='DetailScreen' component={DetailScreen} />
+            <Stack.Screen name= 'SlidesScreen' component={SlidesScreen} />
+            <Stack.Screen name='DailyScreen' component={DailyPractices} />
         </Stack.Navigator>
     );
 }
