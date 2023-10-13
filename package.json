@@ -21,6 +21,7 @@
     "react-native-screens": "^3.25.0",
     "react-native-snap-carousel": "github:apurba-bware/react-native-snap-carousel#5a7f809e921262e4e2f646e8cfc4da85f7bd663d",
     "react-native-vector-icons": "^10.0.0",
+    "react-native-video": "^5.2.1",
     "react-navigation": "^4.4.4"
   },
   "devDependencies": {
@@ -34,6 +35,7 @@
     "@types/react-native-modal-dropdown": "^1.0.2",
     "@types/react-native-snap-carousel": "^3.8.6",
     "@types/react-native-vector-icons": "^6.4.15",
+    "@types/react-native-video": "^5.0.16",
     "@types/react-navigation": "^3.4.0",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.2.1",

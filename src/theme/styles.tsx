@@ -191,5 +191,25 @@ export const styles = StyleSheet.create({
         flexDirection:'row',
         marginVertical: 5,
         alignItems:'center'
+      },
+
+
+      //Musica Gnostica
+      titleMusic:{
+        color: colors.titleText,
+        fontSize:20,
+        margin: 1,
+        textAlign:'center'
+      },
+      subtitleMusic:{
+        color: colors.titleText,
+        marginHorizontal: 15,
+        fontSize: 16,
+        marginVertical: 10,
+      },
+      textMusic:{
+        color: colors.text,
+        fontSize: 15,
+        marginHorizontal: 10
       }
 });

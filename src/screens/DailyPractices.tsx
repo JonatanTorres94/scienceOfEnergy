@@ -1,25 +1,39 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Switch, TextInput, StyleSheet } from 'react-native';
 import ModalSelector from 'react-native-modal-selector'; // Asegúrate de que has importado correctamente ModalSelector
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {dataForMantram, dataForPranayama} from '../data/videosData'
 
 import { Pranayama } from '../components/Pranayama'; // Importa tus componentes
-import { Mantra } from '../components/Mantra'; // Importa tus componentes
+import { VideoModule } from '../components/VideoModule'; // Importa tus componentes
 import { GoBack } from '../components/GoBack';
 
 export const DailyPractices: React.FC = () => {
     const [selectedItem, setSelectedItem] = useState<string | null>(null);
+    const [selectedData, setSelectedData] = useState<any>(null);
 
     const menuItems = [
         { key: 1, label: "Pranayama" },
-        { key: 2, label: "Mantra" },
-        // Agrega más elementos según tus necesidades
+        { key: 2, label: "Mantralizacion" },
+        { key: 3, label: "Lamaseria" },
+        { key: 4, label: "Alquimia Sexual" },
+        { key: 5, label: "Meditacion" },
+        { key: 6, label: "Desdoblamiento Asrtral" },
+        { key: 7, label: "Muerte En Marcha" },
+        { key: 8, label: "Estudio de las Obras" },
+        { key: 9, label: "Sacrificio por la Humanidad" },
     ];
 
     const handleSelect = (option: { key: number, label: string }) => {
         setSelectedItem(option.label);
+
+        if(option.key === 1){
+            setSelectedData(dataForPranayama)
+        }else if (option.key === 2){
+            setSelectedData(dataForMantram)
+        }
     };
 
+ 
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             <GoBack />
@@ -28,7 +42,7 @@ export const DailyPractices: React.FC = () => {
                     <Text style={styles.titleModal}>Practicas diarias:</Text>
                     <ModalSelector
                         optionTextStyle={{color:'red'}}
-                        optionStyle={{backgroundColor: 'blue'}}
+                        //overlayStyle={{backgroundColor:'blue'}}
                         data={menuItems}
                         initValue="Selecciona una opción"
                         supportedOrientations={['landscape']}
@@ -43,11 +57,10 @@ export const DailyPractices: React.FC = () => {
                         />
                     </ModalSelector>
                 </View>
-                {selectedItem === 'Pranayama' && <Pranayama />}
-                {selectedItem === 'Mantra' && <Mantra />}
+                {selectedItem === 'Pranayama' && <VideoModule videoUrl={selectedData.videoUrl} text={selectedData.text} title={selectedData.title}/>}
+                {selectedItem === 'Mantralizacion' && <VideoModule videoUrl={selectedData.videoUrl} text={selectedData.text} title={selectedData.title} />}
 
-
-
+            
             </View>
         </View>
     );

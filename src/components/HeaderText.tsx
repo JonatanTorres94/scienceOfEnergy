@@ -17,7 +17,7 @@ export const HeaderText = ({title}:Props) => {
     // const { theme:{colors} } = useContext(ThemeContext)
 
     return (
-        <View style={{ marginTop: top + 30, marginBottom: bottom + 30, alignSelf: 'center' }}>
+        <View style={{ marginTop: top + 20, marginBottom: bottom + 15, alignSelf: 'center' }}>
             <Text style={{...styles.title, color: colors.titleText}}> {title} </Text>
         </View>
     )

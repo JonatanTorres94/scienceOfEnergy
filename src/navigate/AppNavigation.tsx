@@ -13,6 +13,7 @@ import {ChatScreen} from '../screens/ChatScreen';
 import { ConfigScreen } from '../screens/ConfigScreen';
 import { SlidesScreen } from '../screens/SlidesScreen';
 import { DailyPractices } from '../screens/DailyPractices';
+import { GnosticMusicScreen } from '../screens/GnosticMusicScreen';
 
 
 // ... (otros componentes e importaciones)
@@ -84,6 +85,7 @@ export const HomeStack = () => {
             <Stack.Screen name='BooksOfTheVM' component={BooksOfTheVM} />
             <Stack.Screen name= 'SlidesScreen' component={SlidesScreen} />
             <Stack.Screen name='DailyScreen' component={DailyPractices} />
+            <Stack.Screen name='GnosticMusicScreen' component={GnosticMusicScreen} />
         </Stack.Navigator>
     );
 }

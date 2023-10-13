@@ -14,28 +14,19 @@ export const menuItems: MenuItem[] = [
     {
         name: 'Practicas Diarias',
         icon: 'star-sharp',
-        component: 'BooksOfTheVM'
+        component: 'DailyScreen'
     },
     {
         name: 'Musica Gnostica',
         icon: 'star-sharp',
-        component: 'BooksOfTheVM'
+        component: 'GnosticMusicScreen'
     },
     {
         name: 'Practicas de Proteccion',
         icon: 'star-sharp',
         component: 'BooksOfTheVM'
     },
-    {
-        name: 'SlidesScreen',
-        icon: 'star-sharp',
-        component: 'SlidesScreen'
-    },
-    {
-        name: 'DailyScreen',
-        icon: 'star-sharp',
-        component: 'DailyScreen'
-    },
+    
     {
         name: '...',
         icon: 'star-sharp',
