@@ -31,7 +31,7 @@ export const GnosticMusicScreen = () => {
                 
                 <Carousel
                     data={OccultMasters}
-                    renderItem={ ({item}) => <MusicCarousel name={item.name} cover={item.cover} />}
+                    renderItem={ ({item}) => <MusicCarousel name={item.name} cover={item.cover} musicalWorks={item.musicalWorks} />}
                     sliderWidth={windowsWWith}
                     itemWidth={300}
                 />

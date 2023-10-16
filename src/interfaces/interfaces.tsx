@@ -22,5 +22,6 @@ export interface videoInterface{
 export interface OccultMastersInterface {
     name: string,
     cover: ImageSourcePropType,
+    musicalWorks: string[] 
 
 }

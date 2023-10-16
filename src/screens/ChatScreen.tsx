@@ -14,7 +14,7 @@ export const ChatScreen: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
 
-  const login = false
+  const login = true
 
   const sendMessage = () => {
     if (message.trim() === '') return;
