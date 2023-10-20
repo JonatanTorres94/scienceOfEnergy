@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, TouchableOpacity, Switch, TextInput, StyleSheet } from 'react-native';
 import ModalSelector from 'react-native-modal-selector'; // Asegúrate de que has importado correctamente ModalSelector
 import {dataForMantram, dataForPranayama} from '../data/videosData'
@@ -6,10 +6,14 @@ import {dataForMantram, dataForPranayama} from '../data/videosData'
 import { Pranayama } from '../components/Pranayama'; // Importa tus componentes
 import { VideoModule } from '../components/VideoModule'; // Importa tus componentes
 import { GoBack } from '../components/GoBack';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
+
+
 
 export const DailyPractices: React.FC = () => {
     const [selectedItem, setSelectedItem] = useState<string | null>(null);
     const [selectedData, setSelectedData] = useState<any>(null);
+    const {theme: {colors}} = useContext( ThemeContext)
 
     const menuItems = [
         { key: 1, label: "Pranayama" },
@@ -35,11 +39,11 @@ export const DailyPractices: React.FC = () => {
 
  
     return (
-        <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <View style={{ flex: 1, backgroundColor: colors.background }}>
             <GoBack />
             <View style={styles.container}>
                 <View style={styles.selectorContainer}>
-                    <Text style={styles.titleModal}>Practicas diarias:</Text>
+                    <Text style={{...styles.titleModal, color:colors.titleText}}>Practicas diarias:</Text>
                     <ModalSelector
                         optionTextStyle={{color:'red'}}
                         //overlayStyle={{backgroundColor:'blue'}}
@@ -86,7 +90,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     titleModal: {
-        color: 'black',
         fontSize: 25,
         right: 10
     },

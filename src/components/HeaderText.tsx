@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { styles } from '../theme/styles'
 import { colors } from '../theme/colors'
-// import { ThemeContext } from '../context/themeContext/ThemeContext'
+import { ThemeContext } from '../context/themeContext/ThemeContext'
 
 interface Props{
     title: string
@@ -11,6 +11,7 @@ interface Props{
 
 export const HeaderText = ({title}:Props) => {
 
+    const {theme: {colors}} = useContext( ThemeContext)
 
     const { top, bottom } = useSafeAreaInsets()
 

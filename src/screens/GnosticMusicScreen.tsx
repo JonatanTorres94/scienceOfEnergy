@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Dimensions, Text, View } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
 import { BooksVM } from '../data/books'
@@ -10,6 +10,7 @@ import { musicText } from '../data/textData';
 import { ScrollView } from 'react-native-gesture-handler';
 import { MusicCarousel } from '../components/MusicCarousel';
 import { OccultMasters } from '../data/OccultMasters';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 const {width: windowsWWith} = Dimensions.get('window')
 
@@ -18,15 +19,16 @@ export const GnosticMusicScreen = () => {
     const subTitle = ['“La música es el verbo de Dios” \n Samael Aun Weor.','“La Música convierte a los hombres en Dioses”. VM SAW.']
 
     
+    const {theme: {colors}} = useContext( ThemeContext)
 
     return (
-        <View style={{ flex: 1}}>
+        <View style={{ flex: 1 , backgroundColor: colors.background}}>
             <GoBack />
             <ScrollView>
             <HeaderText title='Musica Ocultista' />
-            <Text style={styles.titleMusic}> {subTitle[0]} </Text>
-            <Text style={styles.subtitleMusic}> {subTitle[1]} </Text>
-            <Text style={styles.textMusic} > {musicText}  </Text>
+            <Text style={{...styles.titleMusic, color: colors.titleText}}> {subTitle[0]} </Text>
+            <Text style={{...styles.subtitleMusic, color: colors.titleText}}> {subTitle[1]} </Text>
+            <Text style={{...styles.textMusic, color: colors.globalText}} > {musicText}  </Text>
             <View style={{  alignContent:'center', marginRight:80}}>
                 
                 <Carousel

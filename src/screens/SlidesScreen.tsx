@@ -8,6 +8,8 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { useAnimation } from '../hooks/useAnimation'
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../theme/colors'
+import { LoginScreen } from './LoginScreen'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const { height: screenHeight, width: screenWidht } = Dimensions.get('window')
 
@@ -16,6 +18,7 @@ interface Slide {
     desc: string;
     img: ImageSourcePropType
 }
+
 
 const items: Slide[] = [
     {
@@ -41,7 +44,7 @@ export const SlidesScreen = () => {
     const { opacity, fadeIn } = useAnimation()
     const isVisible = useRef(false)
 
-    const navigation = useNavigation()
+    const navigation = useNavigation();
 
     const renderItem = (item: Slide) => {
         return (
@@ -62,6 +65,9 @@ export const SlidesScreen = () => {
             </View>
         )
     }
+
+
+    
 
 
     return (
@@ -114,7 +120,7 @@ export const SlidesScreen = () => {
                     }}
                     onPress={() => {
                         if(isVisible.current) {
-                            navigation.goBack()
+                            navigation.navigate("LoginScreen" as never) 
                         }
                     }}
                     >

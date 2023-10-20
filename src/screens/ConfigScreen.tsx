@@ -1,12 +1,22 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { Button, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { HeaderText } from '../components/HeaderText'
 import { ItemSeparator } from '../components/ItemSeparator'
 import { styles } from '../theme/styles';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { colors } from '../theme/colors';
+import { ThemeComponent } from '../components/ThemeComponent';
 
 export const ConfigScreen = () => {
+
+
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+
   return (
     <View style={{ flex: 1, backgroundColor: colors.bgcConfig }}>
       <HeaderText title='Configuration' />
@@ -45,8 +55,31 @@ export const ConfigScreen = () => {
 
           <View style={styles.itemConfig}>
             <Icon name='color-fill-outline' size={18} color={'black'} />
-            <Text style={{ marginHorizontal: 10, color: 'black' }} >Temas de Aplicacion</Text>
+            <TouchableOpacity onPress={toggleModal}>
+              <Text style={{ marginHorizontal: 10, color: 'black' }} >Temas de Aplicacion</Text>
+            </TouchableOpacity>
           </View>
+
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={isModalVisible}
+            onRequestClose={toggleModal}
+          >
+            <View style={sty.modalBackground}>
+              <View style={sty.modalContent}>
+                <ThemeComponent/>
+                <Pressable onPress={toggleModal} style={sty.btnModal}>
+                  <Text style={sty.buttonText}>Cerrar</Text>
+                </Pressable>
+                
+              </View>
+            </View>
+          </Modal>
+
+
+
+
 
           <View style={styles.itemConfig}>
             <Icon name='cloud-download-outline' size={18} color={'black'} />
@@ -82,3 +115,37 @@ export const ConfigScreen = () => {
     </View>
   )
 }
+
+const sty = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalBackground: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    width: '80%',
+    height: '25%',
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+  },
+  btnModal:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    top:'30%',
+    borderRadius: 5,
+    elevation: 3, 
+  },
+  buttonText: {
+    color: 'black',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});

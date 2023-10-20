@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Dimensions, View } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
 import { BooksVM } from '../data/books'
@@ -6,12 +6,14 @@ import { BooksVM } from '../data/books'
 import { GoBack } from '../components/GoBack'
 import { HeaderText } from '../components/HeaderText'
 import { PortBooks } from '../components/PortBooks';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 const {width: windowsWWith} = Dimensions.get('window')
 
 export const BooksOfTheVM = () => {
+    const {theme: {colors}} = useContext( ThemeContext)
     return (
-        <View style={{ flex: 1}}>
+        <View style={{ flex: 1 ,backgroundColor: colors.background}}>
             <GoBack />
             <HeaderText title='Libros de los VM' />
             <View style={{  alignContent:'center', marginRight:80}}>

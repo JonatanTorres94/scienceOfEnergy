@@ -26,12 +26,7 @@ export const menuItems: MenuItem[] = [
         icon: 'star-sharp',
         component: 'BooksOfTheVM'
     },
-    
-    {
-        name: '...',
-        icon: 'star-sharp',
-        component: 'BooksOfTheVM'
-    }
+
     
     
     

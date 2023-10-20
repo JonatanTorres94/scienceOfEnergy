@@ -13,6 +13,8 @@ export const MusicCarousel = ({ name, cover, musicalWorks }: OccultMastersInterf
     const [copiedText, setCopiedText] = useState('')
     const [isCopiedAlertVisible, setIsCopiedAlertVisible] = useState(false);
 
+    
+
     const copyToClipboard = (text: string) => {
         Clipboard.setString(text);
         setCopiedText(text);
@@ -33,7 +35,7 @@ export const MusicCarousel = ({ name, cover, musicalWorks }: OccultMastersInterf
 
 
     return (
-        <View style={styles.container}>
+        <View style={{...styles.container}}>
 
 
             <View style={styles.imgContainer}>
@@ -78,8 +80,8 @@ export const MusicCarousel = ({ name, cover, musicalWorks }: OccultMastersInterf
                                 </TouchableOpacity>
 
                                 {musicalWorks.map((work, index) => (
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <Text key={index} style={styles.modalMessageMusic}>
+                                    <View key={index} style={{ flexDirection: 'row' }}>
+                                        <Text style={styles.modalMessageMusic}>
                                             {work}
                                         </Text>
                                         <View style={{ flex: 1 }}></View>

@@ -15,7 +15,6 @@ export const PortBooks = ({ name, cover, description }: BooksItems) => {
         setIsAlertVisible(!isAlertVisible);
     };
 
-    console.log(name)
 
     return (
         <View style={styles.container}>
