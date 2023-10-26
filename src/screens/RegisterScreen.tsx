@@ -8,11 +8,15 @@ import {
 } from 'react-native';
 import { firebase_auth } from '../firebase/firebase_auth';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 export const RegisterScreen = () => {
 
-    const navigation = useNavigation();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  
+  const navigation = useNavigation();
 
   const handleRegister = async() => {
     
@@ -20,7 +24,8 @@ export const RegisterScreen = () => {
 
       const response = await createUserWithEmailAndPassword(firebase_auth, email, password)
 
-      //navigation.navigate('Login')
+      navigation.navigate('LoginScreen' as never)
+      console.log(response)
 
     } catch (e) {
       console.log("Error en registro",e)
@@ -29,8 +34,7 @@ export const RegisterScreen = () => {
   }
 
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+
 
   return (
     <View style={styles.container}>

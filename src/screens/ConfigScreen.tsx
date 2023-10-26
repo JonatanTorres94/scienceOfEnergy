@@ -1,16 +1,36 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { HeaderText } from '../components/HeaderText'
 import { ItemSeparator } from '../components/ItemSeparator'
 import { styles } from '../theme/styles';
 import Icon from 'react-native-vector-icons/Ionicons'
-import { colors } from '../theme/colors';
 import { ThemeComponent } from '../components/ThemeComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../redux/Store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
+import { clearUser } from '../redux/slice/authSlice';
 
 export const ConfigScreen = () => {
 
-
+  const {theme: {colors}} = useContext( ThemeContext)
   const [isModalVisible, setModalVisible] = useState(false);
+  const [email, setEmail] = useState('')
+  
+  const dispatch = useDispatch();
+  const userEmail = useSelector((state: RootState) => state.auth.user);
+
+  useEffect(() => {
+
+  }, [userEmail]);
+  
+
+
+  const closedSession = async () => {
+    dispatch(clearUser());
+  }
+
+
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -18,24 +38,25 @@ export const ConfigScreen = () => {
 
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bgcConfig }}>
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
       <HeaderText title='Configuration' />
 
-      <View style={{ flexWrap: 'wrap', backgroundColor: colors.boxConfigColor, marginVertical: 10, borderRadius: 30 }}>
+      <View style={{ flexWrap: 'wrap', backgroundColor: colors.border, marginVertical: 10, borderRadius: 30 }}>
 
         <View style={styles.boxText}>
           <Text style={styles.titleConfig} > Cuenta</Text>
           <Text style={styles.varOption} >{'User Name'}</Text>
-          <Text>nombre de usuario</Text>
+          <Text>Email Asociado: {userEmail} </Text>
           <ItemSeparator />
           <Text style={styles.varOption} >{'05/10/2023'}</Text>
           <Text>Fecha de registro</Text>
+          <Button title='Cerrar session' onPress={() => closedSession()}/>
         </View>
       </View>
 
 
 
-      <View style={{ flexWrap: 'wrap', backgroundColor: colors.boxConfigColor, marginVertical: 10, borderRadius: 30 }}>
+      <View style={{ flexWrap: 'wrap', backgroundColor: colors.border, marginVertical: 10, borderRadius: 30 }}>
         <View style={styles.boxText}>
           <Text style={styles.titleConfig}> Ajustes</Text>
           <View style={styles.itemConfig}>
@@ -90,7 +111,7 @@ export const ConfigScreen = () => {
       </View>
 
 
-      <View style={{ flexWrap: 'wrap', backgroundColor: colors.boxConfigColor, marginVertical: 10, borderRadius: 30 }}>
+      <View style={{ flexWrap: 'wrap', backgroundColor: colors.border, marginVertical: 10, borderRadius: 30 }}>
 
         <View style={styles.boxText}>
           <Text style={styles.titleConfig} > Ayuda</Text>

@@ -54,6 +54,7 @@ export const AppNavigation = () => {
     return (
 
         <NavigationContainer >
+
             <Tab.Navigator
                 screenOptions={{ headerShown: false, title: '' }}
 
@@ -75,6 +76,7 @@ export const AppNavigation = () => {
                         ),
                         tabBarStyle: { backgroundColor: colors.background }
                     }}
+
                 />
                 <Tab.Screen name='Configurations' component={ConfigScreen}
 
