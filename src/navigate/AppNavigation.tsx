@@ -16,6 +16,7 @@ import { GnosticMusicScreen } from '../screens/GnosticMusicScreen';
 import { LoginScreen } from '../screens/LoginScreen';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { RegisterScreen } from '../screens/RegisterScreen';
+import { BooksView } from '../screens/BooksView';
 
 
 type RootStackParamList = {
@@ -29,6 +30,8 @@ type RootStackParamList = {
     Splash: undefined;
     HomeStack: undefined;
     RegisterScreen: undefined;
+    BooksView: {url:string}
+
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -115,6 +118,7 @@ export const HomeStack = () => {
             <Stack.Screen name='GnosticMusicScreen' component={GnosticMusicScreen} />
             <Stack.Screen name='LoginScreen' component={LoginScreen} />
             <Stack.Screen name='RegisterScreen' component={RegisterScreen} />
+            <Stack.Screen name='BooksView' component={BooksView} />
         </Stack.Navigator>
     );
 }

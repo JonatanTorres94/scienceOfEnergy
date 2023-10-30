@@ -5,15 +5,25 @@ import { BooksVM } from '../data/books';
 import { BooksItems } from '../interfaces/interfaces';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { colors } from '../theme/colors';
+import { useNavigation } from '@react-navigation/native';
+import DownloadFiles from './DownloadFiles';
 
 
-export const PortBooks = ({ name, cover, description }: BooksItems) => {
+
+export const PortBooks = ({ name, cover, description, url }: BooksItems) => {
 
     const [isAlertVisible, setIsAlertVisible] = useState(false);
+    const navigation = useNavigation();
 
     const toggleAlert = () => {
         setIsAlertVisible(!isAlertVisible);
     };
+
+    const navigateToBooksView = (url: string) => {
+        navigation.navigate('BooksView' as never, { url });
+      };
+      
+      
 
 
     return (
@@ -35,8 +45,12 @@ export const PortBooks = ({ name, cover, description }: BooksItems) => {
                 <View style={{flexDirection:'row', justifyContent:'space-between', alignContent:'center'}}>
 
 
-                    <TouchableOpacity style={{margin:12, marginTop:15}}>
+                    <TouchableOpacity style={{margin:12, marginTop:15}} onPress={() => DownloadFiles({uri:url, name}) }>
                         <Icon name='cloud-download-outline' size={35} color={colors.alert} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{margin:12, marginTop:15}} onPress={() => navigateToBooksView(url)}>
+                        <Icon name='eye-outline' size={35} color={colors.alert} />
                     </TouchableOpacity>
 
 

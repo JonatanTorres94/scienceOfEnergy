@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
+import DescargarArchivo from '../components/DownloadFiles';
 
 interface Message {
   id: number;
@@ -70,6 +71,7 @@ export const ChatScreen: React.FC = () => {
           <TouchableOpacity onPress={sendMessage}>
             <Ionicons name="send" size={30} color={colors.border} style={styles.sendIcon} />
           </TouchableOpacity>
+          
         </View>
       </View>
     ) : (

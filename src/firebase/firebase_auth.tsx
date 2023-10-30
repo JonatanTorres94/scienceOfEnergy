@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 
 import {getAuth} from 'firebase/auth'
+import PushNotification from "react-native-push-notification";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -15,7 +16,11 @@ const firebaseConfig = {
   appId: "1:919555042852:web:35cfbca160ad7a343872b1"
 };
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
 
-export const firebase_auth = getAuth(app)
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+const firebase_auth = getAuth(app)
+
+export { app, firebase_auth, firebaseConfig };
+

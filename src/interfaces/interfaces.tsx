@@ -10,6 +10,7 @@ export interface MenuItem {
 export interface BooksItems{
     name: string,
     cover: ImageSourcePropType,
+    url: string,
     description ?: string
 }
 
