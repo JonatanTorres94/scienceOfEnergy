@@ -9,21 +9,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/Store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
-import { clearUser } from '../redux/slice/authSlice';
+import { clearUser, setLanguage } from '../redux/slice/authSlice';
+import { LanguageComponent } from '../components/LanguageComponent';
+
 
 export const ConfigScreen = () => {
 
-  const {theme: {colors}} = useContext( ThemeContext)
+  const { theme: { colors } } = useContext(ThemeContext)
   const [isModalVisible, setModalVisible] = useState(false);
+  const [modalComponent, setModalComponent] = useState(null);
+  const [modalTitle, setModalTitle] = useState('');
+
   const [email, setEmail] = useState('')
-  
+
   const dispatch = useDispatch();
-  const userEmail = useSelector((state: RootState) => state.auth.user);
+  const userEmail = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
 
   }, [userEmail]);
+
+  //setear el idioma TEST :TODO
   
+  const language = useSelector((state: RootState) => state.language);
+
+  console.log(language)
 
 
   const closedSession = async () => {
@@ -34,6 +44,14 @@ export const ConfigScreen = () => {
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
+    setModalComponent(null);
+    setModalTitle('');
+  };
+
+  const openModal = (component: any, title: string) => {
+    setModalComponent(component);
+    setModalTitle(title);
+    setModalVisible(true);
   };
 
 
@@ -50,7 +68,7 @@ export const ConfigScreen = () => {
           <ItemSeparator />
           <Text style={styles.varOption} >{'05/10/2023'}</Text>
           <Text>Fecha de registro</Text>
-          <Button title='Cerrar session' onPress={() => closedSession()}/>
+          <Button title='Cerrar session' onPress={() => closedSession()} />
         </View>
       </View>
 
@@ -70,14 +88,16 @@ export const ConfigScreen = () => {
           </View>
 
           <View style={styles.itemConfig}>
-            <Icon name='globe-outline' size={18} color={'black'} />
-            <Text style={{ marginHorizontal: 10, color: 'black' }} >Idioma</Text>
+            <Icon name="globe-outline" size={18} color="black" />
+            <TouchableOpacity onPress={() => openModal(<LanguageComponent />, 'Idioma')}>
+              <Text style={{ marginHorizontal: 10, color: 'black' }}>Idioma</Text>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.itemConfig}>
-            <Icon name='color-fill-outline' size={18} color={'black'} />
-            <TouchableOpacity onPress={toggleModal}>
-              <Text style={{ marginHorizontal: 10, color: 'black' }} >Temas de Aplicacion</Text>
+            <Icon name="color-fill-outline" size={18} color="black" />
+            <TouchableOpacity onPress={() => openModal(<ThemeComponent />, 'Temas de Aplicacion')}>
+              <Text style={{ marginHorizontal: 10, color: 'black' }}>Temas de Aplicacion</Text>
             </TouchableOpacity>
           </View>
 
@@ -89,11 +109,11 @@ export const ConfigScreen = () => {
           >
             <View style={sty.modalBackground}>
               <View style={sty.modalContent}>
-                <ThemeComponent/>
+                <Text style={sty.modalTitle}>{modalTitle}</Text>
+                {modalComponent}
                 <Pressable onPress={toggleModal} style={sty.btnModal}>
                   <Text style={sty.buttonText}>Cerrar</Text>
                 </Pressable>
-                
               </View>
             </View>
           </Modal>
@@ -156,17 +176,21 @@ const sty = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
   },
-  btnModal:{
+  btnModal: {
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 10,
-    top:'30%',
+    top: '30%',
     borderRadius: 5,
-    elevation: 3, 
+    elevation: 3,
   },
   buttonText: {
     color: 'black',
     fontSize: 16,
     fontWeight: 'bold',
   },
+  modalTitle:{
+    color: 'black',
+    fontSize: 14
+  }
 });

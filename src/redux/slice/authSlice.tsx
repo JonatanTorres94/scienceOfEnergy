@@ -6,7 +6,8 @@ const authSlice = createSlice({
     name: "authSlice",
     initialState:{
         user: null,
-        idToken: null
+        idToken: null,
+        language: null
     },
 
     reducers:{
@@ -19,13 +20,17 @@ const authSlice = createSlice({
         clearUser: (state) =>{
             (state.user = null), (state.idToken = null)
         },
+        setLanguage:(state,action)=>{
+            (state.language) = action.payload
+        },
         [REHYDRATE]: (state, action) => {
             // Manejar la rehidratación aquí, por ejemplo:
             state.user = action.payload?.auth?.user || null;
             state.idToken = action.payload?.auth?.idToken || null;
+            state.language = action.payload?.auth?.language || null;
           },
     }
 })
 
-export const {setIdToken,setUser,clearUser} = authSlice.actions
+export const {setIdToken,setUser,clearUser,setLanguage} = authSlice.actions
 export default authSlice.reducer

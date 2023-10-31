@@ -20,7 +20,7 @@ export const ChatScreen: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const userEmail = useSelector((state: RootState) => state.auth.user);
+  const userEmail = useSelector((state: RootState) => state.user);
   const isLoggedIn = userEmail !== null
 
   const {theme: {colors}} = useContext( ThemeContext)
