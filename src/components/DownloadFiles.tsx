@@ -20,6 +20,7 @@ async function DownloadFiles({uri, name}:Props) {
       fileCache: true,
     }).fetch('GET', url);
 
+    
     // Obtener la ruta completa del archivo descargado
     const rutaArchivo = response.path();
 
@@ -59,6 +60,8 @@ async function DownloadFiles({uri, name}:Props) {
       25,
       50
     );
+
+    //response.flush();
   } catch (error) {
     console.error('Error al descargar el archivo:', error);
   }

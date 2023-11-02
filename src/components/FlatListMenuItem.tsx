@@ -7,6 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import { MenuItem } from '../interfaces/interfaces';
 import { styles } from '../theme/styles';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/Store';
 // import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 
@@ -14,11 +16,13 @@ interface Props {
     menuItem: MenuItem
 }
 
-export const FlatListMenuItem = ({ menuItem: { name, icon, component } }: Props) => {
+export const FlatListMenuItem = ({ menuItem: { name, icon, component, nameEn, namePr } }: Props) => {
 
     const { left } = useSafeAreaInsets()
     const navigation = useNavigation();
     const {theme: {colors}} = useContext( ThemeContext)
+    const language = useSelector((state: RootState) => state.language);
+    
 
 
     return (
@@ -39,7 +43,11 @@ export const FlatListMenuItem = ({ menuItem: { name, icon, component } }: Props)
                 />
 
                 <Text style={{...styles.textFlatList, color:colors.titleText}}>
-                    {name}
+                    { (language === 'Spanish' ) ? name :
+                      (language === 'English' ) ? nameEn :
+                      (language === 'Portuguese' ) ? namePr :
+                      name  
+                    }
                 </Text>
 
                 <View style={{ flex: 1 }} />

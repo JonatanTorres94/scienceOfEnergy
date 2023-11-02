@@ -50,7 +50,7 @@ export const styles = StyleSheet.create({
   },
   imgContainer: {
     width: 350,
-    height: 350,
+    height: 400,
     alignSelf: 'center',
   },
   img: {

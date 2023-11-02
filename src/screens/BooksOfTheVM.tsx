@@ -17,26 +17,32 @@ import { RootState } from '../redux/Store';
 
 const { width: windowsWWith } = Dimensions.get('window')
 
-
 export const BooksOfTheVM = () => {
     const { theme: { colors } } = useContext(ThemeContext)
-
+    const language = useSelector((state: RootState) => state.language);
 
 
     return (
 
         <View style={{ flex: 1, backgroundColor: colors.background }}>
             <GoBack />
-            <HeaderText title='Libros de los VM' />
+            <HeaderText title={
+                language === 'Spanish' ? 'Los 3 Factores' :
+                language === 'English' ? 'VM Books' :
+                language === 'Portuguese' ? 'Livros VM' :
+                ""
+            } />
 
-            <View style={{ alignContent: 'center', marginRight: 80 }}>
+            <View style={{ alignContent: 'center'}}>
                 <Carousel
                     data={BooksVM}
-                    renderItem={({ item }) => <PortBooks name={item.name} cover={item.cover} description={item.description} url={item.url}/>}
+                    renderItem={({ item }) => <PortBooks books={item}/>}
                     sliderWidth={windowsWWith}
-                    itemWidth={300}
+                    itemWidth={350}
                 />
             </View>
+
+            
 
 
 

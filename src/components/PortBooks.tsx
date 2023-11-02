@@ -7,13 +7,18 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
 import DownloadFiles from './DownloadFiles';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/Store';
 
+interface Props {
+    books: BooksItems
+}
 
-
-export const PortBooks = ({ name, cover, description, url }: BooksItems) => {
+export const PortBooks = ({ books: { name, nameEn, namePr, cover, description, url, urlEn, urlPr } }: Props) => {
 
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const navigation = useNavigation();
+    const language = useSelector((state: RootState) => state.language);
 
     const toggleAlert = () => {
         setIsAlertVisible(!isAlertVisible);
@@ -21,9 +26,9 @@ export const PortBooks = ({ name, cover, description, url }: BooksItems) => {
 
     const navigateToBooksView = (url: string) => {
         navigation.navigate('BooksView' as never, { url });
-      };
-      
-      
+    };
+
+
 
 
     return (
@@ -39,17 +44,24 @@ export const PortBooks = ({ name, cover, description, url }: BooksItems) => {
             {/* Fondo negro translúcido */}
             <View style={styles.fondoNegro}>
                 {/* Título en el fondo negro */}
-                <Text style={styles.tituloFondo}>{name}</Text>
+                <Text style={styles.tituloFondo}>
+                    {(language === 'Spanish') ? name :
+                     (language === 'English') ? nameEn :
+                     (language === 'Portuguese') ? namePr :
+                     name
+                    }
+                </Text>
 
 
-                <View style={{flexDirection:'row', justifyContent:'space-between', alignContent:'center'}}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center' }}>
 
 
-                    <TouchableOpacity style={{margin:12, marginTop:15}} onPress={() => DownloadFiles({uri:url, name}) }>
+                    <TouchableOpacity style={{ margin: 12, marginTop: 15 }} onPress={() => DownloadFiles({ uri: url, name })}>
                         <Icon name='cloud-download-outline' size={35} color={colors.alert} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{margin:12, marginTop:15}} onPress={() => navigateToBooksView(url)}>
+                    <TouchableOpacity style={{ margin: 12, marginTop: 15 }} 
+                    onPress={() => navigateToBooksView((language=== 'Spanish') ? url : (language==='English')? urlEn : (language==='Portuguese') ? urlPr : url)}>
                         <Icon name='eye-outline' size={35} color={colors.alert} />
                     </TouchableOpacity>
 
