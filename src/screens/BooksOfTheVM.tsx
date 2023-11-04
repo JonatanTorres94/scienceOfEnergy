@@ -42,9 +42,7 @@ export const BooksOfTheVM = () => {
                 />
             </View>
 
-            
-
-
+        
 
         </View>
     )
