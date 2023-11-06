@@ -48,7 +48,7 @@ async function DownloadFiles({uri, name}:Props) {
         }
       } else {
         // Permiso denegado, manejar de acuerdo a tus necesidades
-        console.warn('Permiso denegado para acceder al almacenamiento externo.');
+        console.log('Permiso denegado para acceder al almacenamiento externo.');
       }
     }
 

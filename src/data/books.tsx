@@ -258,7 +258,7 @@ export const BooksVM: BooksItems[] = [
         name: 'Los cuerpos Solares',
         nameEn: 'Solar bodies',
         namePr: 'Corpos solares',
-        cover:require('../images/los cuerpos solares.png'),
+        cover:require('../images/los_cuerpos_solares.png'),
         url:'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/Los%20Cuerpos%20Solares.pdf?alt=media&token=20c44054-ff12-42ef-863c-cbf4889a802f',
         urlEn: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/Solar%20bodies.pdf?alt=media&token=8847e4e7-c385-4f98-a20b-3669cafb1ce3',
         urlPr: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/Corpos%20solares.pdf?alt=media&token=a992f803-73ec-46ea-863f-a7f9a7d5e06b',
