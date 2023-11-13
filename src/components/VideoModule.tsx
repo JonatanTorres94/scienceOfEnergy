@@ -4,14 +4,22 @@ import Video from 'react-native-video';
 import { videoInterface } from '../interfaces/interfaces';
 import { colors } from '../theme/colors';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/Store';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
+interface Props {
+  videoDetails: videoInterface
+}
 
-export const VideoModule = ({videoUrl, text, title}:videoInterface) => {
+// ({ books: { name, nameEn, namePr, cover, description, url, urlEn, urlPr } }: Props) => {
+export const VideoModule = ({ videoDetails: { videoUrl, text, title, titleEn, titlePr, textEn, textPr } }: Props) => {
 
-  const {theme: {colors}} = useContext( ThemeContext)
+  const { theme: { colors } } = useContext(ThemeContext)
+
+  const language = useSelector((state: RootState) => state.language);
 
   const player = useRef<Video | null>(null);
   const [isBuffering, setIsBuffering] = useState(true);
@@ -24,7 +32,7 @@ export const VideoModule = ({videoUrl, text, title}:videoInterface) => {
     setTimeout(() => {
       setIsBuffering(false);
     }, 1000);
-  }, []);
+  }, [isBuffering]);
 
 
 
@@ -32,7 +40,7 @@ export const VideoModule = ({videoUrl, text, title}:videoInterface) => {
     <View style={styles.container}>
       <View style={styles.videoContainer}>
         <Video
-          source={videoUrl}
+          source={{ uri: videoUrl }}
           ref={player}
           controls={true}
           onLoadStart={() => setIsBuffering(true)}
@@ -45,11 +53,23 @@ export const VideoModule = ({videoUrl, text, title}:videoInterface) => {
           </View>
         )}
       </View>
-      <View style={{flex:0.1}}></View>
+      <View style={{ flex: 0.1 }}></View>
       <ScrollView style={styles.scrollView}>
-        <Text style={{...styles.headerText, color:colors.titleText}}>{title}</Text>
-        <Text style={{...styles.paragraph, color:colors.titleText}}>
-          {text}
+
+        <Text style={{ ...styles.headerText, color: colors.titleText }}>
+          {
+            language === 'Spanish' ? title :
+            language === 'English' ? titleEn :
+            language === 'Portuguese' ? titlePr : title
+          }
+        </Text>
+
+        <Text style={{ ...styles.paragraph, color: colors.titleText }}>
+          {
+            language === 'Spanish' ? text :
+            language === 'English' ? textEn :
+            language === 'Portuguese' ? textPr : text
+          }
         </Text>
       </ScrollView>
     </View>
@@ -63,7 +83,7 @@ const styles = StyleSheet.create({
   videoContainer: {
     top: 15,
     position: 'relative',
-    height: deviceHeight *0.3, // Ajusta la altura según tus preferencias
+    height: deviceHeight * 0.3, // Ajusta la altura según tus preferencias
   },
   video: {
     width: deviceWidth,

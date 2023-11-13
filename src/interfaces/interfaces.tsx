@@ -23,7 +23,11 @@ export interface BooksItems{
 export interface videoInterface{
     videoUrl: ImageSourcePropType | any,
     text?: string,
-    title?: string
+    title?: string,
+    titleEn?: string,
+    titlePr?: string,
+    textEn?: string,
+    textPr?: string
 }
 
 export interface OccultMastersInterface {

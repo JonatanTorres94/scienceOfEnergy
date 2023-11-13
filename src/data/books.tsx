@@ -20,16 +20,6 @@ export const BooksVM: BooksItems[] = [
         urlPr:'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/Confer%C3%AAncia%20fase%20B.pdf?alt=media&token=704c11f6-0d2e-4838-a084-5bd64985c801'
     },
     {
-        name: '26 Maneras Para Salir En Cuerpo ASTRAL',
-        nameEn:'26 Ways to Exit in the ASTRAL Body',
-        namePr:'26 Maneiras de Sair em Corpo ASTRAL',
-        cover: require('../images/26_maneras_cuerpo_astral.png'),
-        description: 'Había dicho yo, en la “Síntesis de las Tres Montañas”, que no iba a escribir más, porque la gente lee y no sabe estudiar, pero viéndome en la necesidad, por un libro que sacaron en El  Salvador, un libro que da horror verlo, me veo obligado a sacar este libro, para orientar y desaprobar totalmente ese otro libro que causa angustia ver los errores u horrores que sacaron en ese libro.',
-        url: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/26%20maneras%20para%20astral.pdf?alt=media&token=7b202c73-7611-4bfb-b4d8-aed62bd962e9',
-        urlEn:'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/26%20Ways%20to%20Exit%20in%20the%20ASTRAL%20Body.pdf?alt=media&token=c98a6ea8-b543-4166-8c20-9a1c92758821',
-        urlPr:'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/26%20Maneiras%20de%20Sair%20em%20Corpo%20ASTRAL.pdf?alt=media&token=eacc2eb5-5c98-43f2-85e4-a81bb2e25cb2'
-    },
-    {
         name: 'Sí: Hay infierno, Diablo y Karma',
         nameEn:'Yes: There is hell, Devil and Karma',
         namePr:'Sim: existe o inferno, Diabo e Karma',
