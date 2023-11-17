@@ -46,7 +46,8 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white', // Color de fondo de la tarjeta
     borderRadius: 10, // Bordes redondeados
     elevation: 8, // Elevación para sombra en Android
-    margin: 10, // Margen exterior
+    marginTop: 15,
+    marginBottom: 15, // Margen exterior
   },
   imgContainer: {
     width: 350,
@@ -54,8 +55,9 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   img: {
-    width: '100%',
-    height: '100%',
+    width: '98%',
+    height: '98%',
+    alignSelf: 'center'
   },
   bottomContainer: {
     flexDirection: 'row', // Elementos en fila horizontal
@@ -196,17 +198,18 @@ export const styles = StyleSheet.create({
   //Musica Gnostica
   titleMusic: {
     fontSize: 20,
-    margin: 1,
+    margin: 4,
     textAlign: 'center'
   },
   subtitleMusic: {
     marginHorizontal: 15,
-    fontSize: 16,
+    fontSize: 18,
     marginVertical: 10,
   },
   textMusic: {
-    fontSize: 15,
-    marginHorizontal: 10
+
+    fontSize: 16,
+    marginHorizontal: 15
   },
   botonFondoMusic: {
     backgroundColor: 'rgba(0, 0, 0, 0.7)', // Color de fondo del botón

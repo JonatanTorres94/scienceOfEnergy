@@ -5,15 +5,23 @@ import { OccultMastersInterface } from '../interfaces/interfaces';
 import Icon from 'react-native-vector-icons/Ionicons'
 import Clipboard from '@react-native-clipboard/clipboard';
 import { AlertMessage } from './AlertMessage';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/Store';
+
+interface Props {
+    OccultMaster: OccultMastersInterface
+}
 
 
-export const MusicCarousel = ({ name, cover, musicalWorks }: OccultMastersInterface) => {
+export const MusicCarousel = ({ OccultMaster: { name, cover, musicalWorks, musicalWorksEn, musicalWorksPr } }: Props) => {
+
+    const language = useSelector((state: RootState) => state.language);
 
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const [copiedText, setCopiedText] = useState('')
     const [isCopiedAlertVisible, setIsCopiedAlertVisible] = useState(false);
 
-    
+
 
     const copyToClipboard = (text: string) => {
         Clipboard.setString(text);
@@ -35,7 +43,7 @@ export const MusicCarousel = ({ name, cover, musicalWorks }: OccultMastersInterf
 
 
     return (
-        <View style={{...styles.container}}>
+        <View style={{ ...styles.container }}>
 
 
             <View style={styles.imgContainer}>
@@ -57,7 +65,11 @@ export const MusicCarousel = ({ name, cover, musicalWorks }: OccultMastersInterf
                     <TouchableOpacity style={styles.botonFondoMusic} onPress={toggleAlert}>
 
                         <Icon name="musical-notes-outline" size={25} color="white" style={styles.icono} />
-                        <Text style={styles.textoBoton}>Obras de los Maestros</Text>
+                        <Text style={styles.textoBoton}>
+                            {
+                                language == 'English' ? 'Works of the Masters' : language == 'Portuguese' ? 'Obras dos Mestres' : 'Obras de los Maestros'
+                            }
+                        </Text>
 
                     </TouchableOpacity>
 
@@ -79,18 +91,49 @@ export const MusicCarousel = ({ name, cover, musicalWorks }: OccultMastersInterf
 
                                 </TouchableOpacity>
 
-                                {musicalWorks.map((work, index) => (
-                                    <View key={index} style={{ flexDirection: 'row' }}>
-                                        <Text style={styles.modalMessageMusic}>
-                                            {work}
-                                        </Text>
-                                        <View style={{ flex: 1 }}></View>
-                                        <TouchableOpacity onPress={() => copyToClipboard(work)}>
-                                            <Icon name="copy-outline" size={25} color="black" style={styles.icono} />
-                                        </TouchableOpacity>
+                                {
+                                    language == 'English' ? 
+                                    
+                                    (musicalWorksEn.map((work, index) => (
+                                        <View key={index} style={{ flexDirection: 'row' }}>
+                                            <Text style={styles.modalMessageMusic}>
+                                                {work}
+                                            </Text>
+                                            <View style={{ flex: 1 }}></View>
+                                            <TouchableOpacity onPress={() => copyToClipboard(work)}>
+                                                <Icon name="copy-outline" size={25} color="black" style={styles.icono} />
+                                            </TouchableOpacity>
 
-                                    </View>
-                                ))}
+                                        </View>
+                                    )))
+                                    : language == 'Portuguese' ?
+                                    (musicalWorksPr.map((work, index) => (
+                                        <View key={index} style={{ flexDirection: 'row' }}>
+                                            <Text style={styles.modalMessageMusic}>
+                                                {work}
+                                            </Text>
+                                            <View style={{ flex: 1 }}></View>
+                                            <TouchableOpacity onPress={() => copyToClipboard(work)}>
+                                                <Icon name="copy-outline" size={25} color="black" style={styles.icono} />
+                                            </TouchableOpacity>
+
+                                        </View>
+                                    ))) :
+                                    (musicalWorks.map((work, index) => (
+                                        <View key={index} style={{ flexDirection: 'row' }}>
+                                            <Text style={styles.modalMessageMusic}>
+                                                {work}
+                                            </Text>
+                                            <View style={{ flex: 1 }}></View>
+                                            <TouchableOpacity onPress={() => copyToClipboard(work)}>
+                                                <Icon name="copy-outline" size={25} color="black" style={styles.icono} />
+                                            </TouchableOpacity>
+
+                                        </View>
+                                    )))
+
+
+                                }
                                 {isCopiedAlertVisible && (<AlertMessage message="Obra copiada" />)}
 
 
