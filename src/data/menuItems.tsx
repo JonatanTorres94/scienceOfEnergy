@@ -34,7 +34,7 @@ export const menuItems: MenuItem[] = [
         nameEn:'Protective Practices',
         namePr:'Práticas de Proteção',
         icon: 'star-sharp',
-        component: 'BooksOfTheVM'
+        component: 'ProtectivePractices'
     },
     
 ]
