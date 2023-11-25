@@ -36,6 +36,13 @@ export interface OccultMastersInterface {
     musicalWorks: string[],
     musicalWorksEn: string[],
     musicalWorksPr: string[]  
-
-
+}
+export interface ProtectiveInterface {
+    title: string,
+    titleEn: string,
+    titlePr: string,
+    cover : ImageSourcePropType,
+    text: string,
+    textPr: string,
+    textEn: string
 }

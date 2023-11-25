@@ -1,79 +1,107 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import React, { useContext, useState } from 'react'
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { GoBack } from '../components/GoBack';
+import ModalSelector from 'react-native-modal-selector';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
+import { dataForPentalfa } from '../data/ProtectiveData';
+import { PracticesModule } from '../components/PracticesModule';
 
-const { width } = Dimensions.get('window');
-const boxSize = width / 2; // Restamos 20 para dejar espacio entre los cuadros
+export const ProtectivePractices = () => {
+    const [selectedItem, setSelectedItem] = useState<string | null>(null);
+    const [selectedData, setSelectedData] = useState<any>(null);
+    const { theme: { colors } } = useContext(ThemeContext)
 
-export const ProtectivePractices: React.FC = () => {
-    const renderBoxes = () => {
-        const boxTexts = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const menuItems = [
+        { key: 1, label: "Pentalfa" },
+        { key: 2, label: "Circulo Mágico" },
+        { key: 3, label: "Conjuracion de Jupiter" },
+        { key: 4, label: "Tetragramaton" },
+        { key: 5, label: "Limpieza con Esvastica" },
+        { key: 6, label: "Proteccion contra Brujas" },
+        { key: 7, label: "Conjuracion de los 7" },
+        { key: 8, label: "Conjuro para defenderse de los enemigos" },
+    ];
 
-        return (
-            <View style={{ flex: 1 }}>
-                <GoBack />
+    const dataMap: Record<string, any> = {
+        Pentalfa: dataForPentalfa
+    };
+
+    const handleSelect = (option: { key: number, label: string }) => {
+        setSelectedItem(option.label);
+        setSelectedData(dataMap[option.label]);
+
+    };
 
 
-                <ScrollView>
-                    <View style={styles.container}>
+    return (
+        <View style={{ flex: 1, backgroundColor: colors.background }}>
+            <GoBack />
+            <View style={styles.container}>
+                <View style={styles.selectorContainer}>
+                    <Text style={{ ...styles.titleModal, color: colors.titleText}}>Practicas de Proteccion:</Text>
+                    <ModalSelector
+                        optionTextStyle={{ color: 'blue' }}
+                        //overlayStyle={{backgroundColor:'blue'}}
+                        data={menuItems}
+                        initValue="Selecciona una opción"
+                        supportedOrientations={['landscape']}
+                        accessible={true}
+                        scrollViewAccessibilityLabel={'Scrollable options'}
+                        cancelButtonAccessibilityLabel={'Cancel Button'}
+                        onChange={(option) => handleSelect(option)}>
+                        <TextInput
+                            style={styles.textInputDP}
+                            editable={false}
+                            value={selectedItem || "Selecciona una opción"}
+                        />
+                    </ModalSelector>
+                </View>
+                {selectedItem && <PracticesModule ProtectiveDetail={selectedData}/>}
+                {/* {selectedItem == null && <PreViewDaily />}
+                selectedItem && <VideoModule videoDetails={selectedData} />}  */}
 
-
-
-                        {[0, 1, 2, 3].map((rowIndex) => (
-                            <View key={rowIndex} style={styles.row}>
-                                {[0, 1].map((colIndex) => {
-                                    const index = rowIndex * 2 + colIndex;
-                                    const text = boxTexts[index];
-                                    return (
-                                        <TouchableOpacity
-                                            key={index}
-                                            style={styles.box}
-                                            onPress={() => handleBoxPress(text)}
-                                        >
-                                            <Text style={styles.boxText}>{text}</Text>
-                                        </TouchableOpacity>
-                                    );
-                                })}
-                            </View>
-                        ))}
-                    </View>
-                </ScrollView>
             </View>
-        );
-    };
-
-    const handleBoxPress = (text: string) => {
-        console.log(`Pressed box ${text}`);
-        // Puedes implementar aquí la lógica para manejar el evento de presionar el cuadro
-    };
-
-    return renderBoxes();
-};
-
+        </View>
+    );
+}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 90,
-        flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
+        padding: 20,
     },
-    row: {
+    selectorContainer: {
         flexDirection: 'row',
-    },
-    box: {
-        width: boxSize,
-        height: boxSize,
-        backgroundColor: 'lightblue',
-        justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 1,
-        borderColor: 'black',
-        margin: 0,
+        marginBottom: 5,
     },
-    boxText: {
-        fontSize: 20,
+    selectorText: {
+        fontSize: 16,
         fontWeight: 'bold',
+        marginBottom: 10,
     },
+    selectedOptionText: {
+        fontSize: 16,
+    },
+    titleModal: {
+        flex:1,
+        margin: 10,
+        fontSize: 25,
+        right: 10
+    },
+    textInputDP: {
+        borderWidth: 1,
+        borderColor: '#F1F7FD',
+        fontSize: 15,
+        textAlign: 'center',
+        color: 'black',
+        borderRadius: 10,
+        backgroundColor: 'white', // Agrega un fondo blanco
+        shadowColor: '#000', // Color de la sombra
+        shadowOffset: { width: 0, height: 2 }, // Desplazamiento de la sombra
+        shadowOpacity: 0.5, // Opacidad de la sombra
+        shadowRadius: 3, // Radio de la sombra
+        elevation: 5,
+    }
 });
 
