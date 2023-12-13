@@ -14,7 +14,7 @@ import { RootState } from '../redux/Store'
 
 export const HomeScreen = () => {
 
-  const {theme: {colors}} = useContext( ThemeContext)
+  const { theme: { colors } } = useContext(ThemeContext)
   const { fadeIn, opacity, height } = useAnimation()
   const language = useSelector((state: RootState) => state.language);
 
@@ -26,18 +26,20 @@ export const HomeScreen = () => {
     <View style={{ flex: 1, backgroundColor: colors.background }}>
 
       <Animated.View
-        style={{ opacity, 
+        style={{
+          opacity,
           transform: [{
             translateY: height
-        }] }}
-        
+          }]
+        }}
+
       >
         <Image
           source={
             language === 'Spanish' ? (colors.background === 'black') ? require('../images/logo_blanco.png') : require('../images/logo_negro.png') :
-            language === 'English' ? (colors.background === 'black') ? require('../images/white_logo.png') : require('../images/black_logo.png') :
-            language === 'Portuguese' ? (colors.background === 'black') ? require('../images/logotipo_branco.png') : require('../images/logotipo_preto.png') :
-            require('../images/logo_blanco.png')
+              language === 'English' ? (colors.background === 'black') ? require('../images/white_logo.png') : require('../images/black_logo.png') :
+                language === 'Portuguese' ? (colors.background === 'black') ? require('../images/logotipo_branco.png') : require('../images/logotipo_preto.png') :
+                  require('../images/logo_blanco.png')
           }
           style={{ width: 280, height: 150, alignSelf: 'center', resizeMode: 'contain', }}
         />
@@ -48,6 +50,17 @@ export const HomeScreen = () => {
         renderItem={({ item }) => <FlatListMenuItem menuItem={item} />}
         keyExtractor={(item) => item.name}
         ItemSeparatorComponent={ItemSeparator}
+        style={{ marginTop: '10%' }}
+      />
+
+      <Image
+        source={
+          language === 'Spanish' ? (colors.background === 'black') ? require('../images/waterlog.png') : require('../images/waterlog.png') :
+            language === 'English' ? (colors.background === 'black') ? require('../images/white_logo.png') : require('../images/black_logo.png') :
+              language === 'Portuguese' ? (colors.background === 'black') ? require('../images/logotipo_branco.png') : require('../images/logotipo_preto.png') :
+                require('../images/logo_blanco.png')
+        }
+        style={{ width: 140, height: 75, alignSelf: 'center', resizeMode: 'contain', marginBottom:'10%' }}
       />
 
     </View>

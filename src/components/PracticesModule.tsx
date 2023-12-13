@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, ScrollView, Image, Dimensions, StyleSheet, Text } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ProtectiveInterface } from '../interfaces/interfaces';
+import { useSelector } from 'react-redux';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
+import { RootState } from '../redux/Store';
 
 
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-const imageWidth = screenWidth;
-const imageHeight = screenHeight;
 
 
 interface Props {
     ProtectiveDetail: ProtectiveInterface
 }
 
-export const PracticesModule = ({ ProtectiveDetail: { title, cover } }: Props) => {
+export const PracticesModule = ({ ProtectiveDetail: { title, cover, text, textEn, textPr, titleEn, titlePr } }: Props) => {
+
+    const { theme: { colors } } = useContext(ThemeContext)
+    const language = useSelector((state: RootState) => state.language);
+    const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+    const imageWidth = screenWidth;
+    const imageHeight = screenHeight * 0.35;
 
     const scaleImage = useSharedValue(1)
     const focoX = useSharedValue(0)
@@ -48,22 +54,31 @@ export const PracticesModule = ({ ProtectiveDetail: { title, cover } }: Props) =
         ],
         width: imageWidth,
         height: imageHeight,
-        marginBottom: '90%'
+        resizeMode: 'contain',
     }))
 
     return (
         <View style={styles.container}>
+            <Text style={{ fontSize: 24, color: colors.globalText }}>
+            {(language === 'Spanish' ? title : language === 'English' ? titleEn : titlePr)}
+            </Text>
+            <View>
+                <GestureHandlerRootView>
+                    <GestureDetector gesture={pinchScreen}>
+                        <Animated.Image
+                            source={cover}
+                            style={styleAnimated}
+                            resizeMode="contain"
+                        />
+                    </GestureDetector>
+                </GestureHandlerRootView>
+            </View>
 
-            <GestureHandlerRootView>
-                <GestureDetector gesture={pinchScreen}>
-                    <Animated.Image
-                        source={cover}
-                        style={styleAnimated}
-                        resizeMode="contain"
-                    />
-                </GestureDetector>
-            </GestureHandlerRootView>
-
+            <ScrollView style={{ flex: 1 }}>
+                <Text style={{ margin: 5, fontSize: 18, color: colors.globalText }}>
+                    {(language === 'Spanish' ? text : language === 'English' ? textEn : textPr)}
+                </Text>
+            </ScrollView>
         </View>
     )
 }
@@ -72,7 +87,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
 
     },
 });

@@ -36,5 +36,19 @@ export const menuItems: MenuItem[] = [
         icon: 'star-sharp',
         component: 'ProtectivePractices'
     },
+    {
+        name: '3°Estado de Conciencia',
+        nameEn:'Protective Practices',
+        namePr:'Práticas de Proteção',
+        icon: 'star-sharp',
+        component: 'ProtectivePractices'
+    },
+    {
+        name: 'Sagrado Oficio',
+        nameEn:'Protective Practices',
+        namePr:'Práticas de Proteção',
+        icon: 'star-sharp',
+        component: 'ProtectivePractices'
+    },
     
 ]

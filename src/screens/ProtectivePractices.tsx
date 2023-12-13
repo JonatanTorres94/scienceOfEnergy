@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { GoBack } from '../components/GoBack';
 import ModalSelector from 'react-native-modal-selector';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
-import { dataForPentalfa } from '../data/ProtectiveData';
+import {  dataForCircle, dataForConjuracionSiete, dataForJupiter, dataForPentalfa, dataForProtec, dataForSwastica, dataForTetragramaton } from '../data/ProtectiveData';
 import { PracticesModule } from '../components/PracticesModule';
 
 export const ProtectivePractices = () => {
@@ -13,17 +13,22 @@ export const ProtectivePractices = () => {
 
     const menuItems = [
         { key: 1, label: "Pentalfa" },
-        { key: 2, label: "Circulo Mágico" },
+        { key: 2, label: "Circulo Magico" },
         { key: 3, label: "Conjuracion de Jupiter" },
         { key: 4, label: "Tetragramaton" },
-        { key: 5, label: "Limpieza con Esvastica" },
-        { key: 6, label: "Proteccion contra Brujas" },
-        { key: 7, label: "Conjuracion de los 7" },
-        { key: 8, label: "Conjuro para defenderse de los enemigos" },
+        { key: 5, label: "Limpieza con Swastica" },,
+        { key: 6, label: "Conjuracion de los 7" },
+        { key: 7, label: "Conjuro contra el Peligro" },
     ];
 
     const dataMap: Record<string, any> = {
-        Pentalfa: dataForPentalfa
+        Pentalfa: dataForPentalfa,
+        "Circulo Magico": dataForCircle,
+        "Conjuracion de Jupiter": dataForJupiter,
+        Tetragramaton: dataForTetragramaton,
+        "Limpieza con Swastica": dataForSwastica,
+        "Conjuracion de los 7": dataForConjuracionSiete,
+        "Conjuro contra el Peligro":  dataForProtec
     };
 
     const handleSelect = (option: { key: number, label: string }) => {
@@ -48,7 +53,7 @@ export const ProtectivePractices = () => {
                         accessible={true}
                         scrollViewAccessibilityLabel={'Scrollable options'}
                         cancelButtonAccessibilityLabel={'Cancel Button'}
-                        onChange={(option) => handleSelect(option)}>
+                        onChange={(option) => handleSelect(option as any)}>
                         <TextInput
                             style={styles.textInputDP}
                             editable={false}
