@@ -2,6 +2,13 @@ import { MenuItem } from "../interfaces/interfaces";
 
 export const menuItems: MenuItem[] = [
     {
+        name: 'Introducción a la Gnosis',
+        nameEn: 'Introduction to Gnosis',
+        namePr: 'Introdução à Gnose',
+        icon: 'star-sharp',
+        component: 'IntroductionToGnosis'
+    },
+    {
         name: 'Los 3 Factores',
         nameEn: 'The Three Factors',
         namePr: 'Os três fatores',
@@ -38,17 +45,10 @@ export const menuItems: MenuItem[] = [
     },
     {
         name: '3°Estado de Conciencia',
-        nameEn:'Protective Practices',
-        namePr:'Práticas de Proteção',
+        nameEn:'3rd State',
+        namePr:'3º Estado de Consciência',
         icon: 'star-sharp',
-        component: 'ProtectivePractices'
-    },
-    {
-        name: 'Sagrado Oficio',
-        nameEn:'Protective Practices',
-        namePr:'Práticas de Proteção',
-        icon: 'star-sharp',
-        component: 'ProtectivePractices'
+        component: 'TheThirdState'
     },
     
 ]

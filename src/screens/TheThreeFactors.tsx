@@ -1,25 +1,34 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { GoBack } from '../components/GoBack'; 
+import React, { useContext, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { GoBack } from '../components/GoBack';
 import { HeaderText } from '../components/HeaderText';
 import { textData, textDataEnglish, textDataPortuguese } from '../data/textData';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { OnlyVideo } from '../components/OnlyVideo';
 
 export const TheThreeFactors = () => {
 
     const { theme: { colors } } = useContext(ThemeContext)
-    
     const language = useSelector((state: RootState) => state.language);
+    const [showVideoIndex, setShowVideoIndex] = useState<number | null>(null);
+
+    const toggleVideoView = (index: number | null) => {
+        setShowVideoIndex(showVideoIndex === index ? null : index);
+    };
+
+
+
     return (
         <View style={{ ...styles.container, backgroundColor: colors.background }}>
             <GoBack />
             <HeaderText title={
                 language === 'Spanish' ? 'Los 3 Factores' :
-                language === 'English' ? 'The 3 Factors' :
-                language === 'Portuguese' ? 'Os 3 Fatores' :
-                ""
+                    language === 'English' ? 'The 3 Factors' :
+                        language === 'Portuguese' ? 'Os 3 Fatores' :
+                            ""
             } />
 
             <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -28,6 +37,10 @@ export const TheThreeFactors = () => {
                         <View key={index}>
                             {item.subtitle ? <Text style={{ ...styles.subtitle, color: colors.titleText }}>{item.subtitle}</Text> : null}
                             <Text style={{ ...styles.text, color: colors.globalText }}>{item.text}</Text>
+                            <TouchableOpacity onPress={() => toggleVideoView(index)} style={{alignSelf:'center'}}>
+                                <Icon name='videocam-outline' size={35} color={'black'} />
+                            </TouchableOpacity>
+                            {showVideoIndex === index && <OnlyVideo url={item.videoUrl} />}
                         </View>
                     ))
                 ) : language === 'English' ? (
@@ -47,6 +60,7 @@ export const TheThreeFactors = () => {
                 ) : (
                     <Text>No se encontraron datos para el idioma seleccionado.</Text>
                 )}
+
             </ScrollView>
 
 

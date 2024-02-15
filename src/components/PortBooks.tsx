@@ -7,8 +7,9 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
 import DownloadFiles from './DownloadFiles';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/Store';
+import { setDownloadedBooks } from '../redux/slice/authSlice';
 
 interface Props {
     books: BooksItems
@@ -19,6 +20,7 @@ export const PortBooks = ({ books: { name, nameEn, namePr, cover, description, u
     const [isAlertVisible, setIsAlertVisible] = useState(false);
     const navigation = useNavigation();
     const language = useSelector((state: RootState) => state.language);
+    const dispatch = useDispatch();
 
     const toggleAlert = () => {
         setIsAlertVisible(!isAlertVisible);
@@ -46,9 +48,9 @@ export const PortBooks = ({ books: { name, nameEn, namePr, cover, description, u
                 {/* Título en el fondo negro */}
                 <Text style={styles.tituloFondo}>
                     {(language === 'Spanish') ? name :
-                     (language === 'English') ? nameEn :
-                     (language === 'Portuguese') ? namePr :
-                     name
+                        (language === 'English') ? nameEn :
+                            (language === 'Portuguese') ? namePr :
+                                name
                     }
                 </Text>
 
@@ -56,12 +58,21 @@ export const PortBooks = ({ books: { name, nameEn, namePr, cover, description, u
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center' }}>
 
 
-                    <TouchableOpacity style={{ margin: 12, marginTop: 15 }} onPress={() => DownloadFiles({ uri: url, name })}>
+                    <TouchableOpacity
+                        style={{ margin: 12, marginTop: 15 }}
+                        onPress={() => {
+                            DownloadFiles({
+                                uri: url,
+                                name,
+                                onDownloadComplete: () => dispatch(setDownloadedBooks(name)),
+                            });
+                        }}
+                    >
                         <Icon name='cloud-download-outline' size={35} color={colors.alert} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{ margin: 12, marginTop: 15 }} 
-                    onPress={() => navigateToBooksView((language=== 'Spanish') ? url : (language==='English')? urlEn : (language==='Portuguese') ? urlPr : url)}>
+                    <TouchableOpacity style={{ margin: 12, marginTop: 15 }}
+                        onPress={() => navigateToBooksView((language === 'Spanish') ? url : (language === 'English') ? urlEn : (language === 'Portuguese') ? urlPr : url)}>
                         <Icon name='eye-outline' size={35} color={colors.alert} />
                     </TouchableOpacity>
 

@@ -1,16 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Modal, Pressable, Text, TouchableOpacity, View } from 'react-native'
 import { HeaderText } from '../components/HeaderText'
-import { ItemSeparator } from '../components/ItemSeparator'
-import { styles } from '../theme/styles';
+import { sty, styles } from '../theme/styles';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { ThemeComponent } from '../components/ThemeComponent';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { clearUser, setLanguage } from '../redux/slice/authSlice';
 import { LanguageComponent } from '../components/LanguageComponent';
+import ShowDownloadedBooks from '../components/ShowDownloadedBooks';
+import { Donations } from '../components/Donations';
+
+
 
 
 export const ConfigScreen = () => {
@@ -19,28 +21,19 @@ export const ConfigScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [modalComponent, setModalComponent] = useState(null);
   const [modalTitle, setModalTitle] = useState('');
+  const [isDownloadedBooksModalVisible, setDownloadedBooksModalVisible] = useState(false);
 
-  const [email, setEmail] = useState('')
-
-  const dispatch = useDispatch();
+  const downloadedBooks = useSelector((state: RootState) => state.downloadedBooks);
+  const language = useSelector((state: RootState) => state.language);
   const userEmail = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
 
   }, [userEmail]);
 
-  //setear el idioma TEST :TODO
-  
-  const language = useSelector((state: RootState) => state.language);
-
-  console.log(language)
-
-
-  const closedSession = async () => {
-    dispatch(clearUser());
+  const toggleModalBooks = () => {
+    setDownloadedBooksModalVisible(!isDownloadedBooksModalVisible)
   }
-
-
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -48,149 +41,153 @@ export const ConfigScreen = () => {
     setModalTitle('');
   };
 
-  const openModal = (component: any, title: string) => {
+  const openModal = (component: any) => {
     setModalComponent(component);
-    setModalTitle(title);
     setModalVisible(true);
   };
 
 
+  let title = 'Configuración';
+  let ajustes = 'Ajustes';
+  let idioma = 'Idioma';
+  let tema = 'Temas de Aplicación';
+  let archivos = 'Archivos descargados'
+  let help = 'Ayuda'
+  let report = 'Reporte de Bug'
+  let politica = 'Politica de privacidad'
+  let donacion = 'Donaciones'
+  let close = 'Cerrar'
+
+  switch (language) {
+    case 'English':
+      title = 'Setting';
+      ajustes = 'Settings';
+      idioma = 'Language';
+      tema = 'Application Topics';
+      archivos = 'Downloaded files';
+      help = 'Help';
+      report = 'Bug Report';
+      politica = 'Privacy Policy';
+      donacion = 'Donations';
+      close = 'Close'
+      break;
+    case 'Portuguese':
+      title = 'Configuração';
+      ajustes = 'Configurações';
+      idioma = 'Linguagem';
+      tema = 'Tópicos de Aplicação';
+      archivos = 'Arquivos baixados';
+      help = 'Ajuda';
+      report = 'Relatório de erro';
+      politica = 'Política de Privacidade';
+      donacion = 'Doações';
+      close = 'Fechar';
+      break;
+  }
+
+
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
-      <HeaderText title='Configuration' />
+      <HeaderText title={title} />
+      {/* //TODO: IMPLEMENTACION DE LA CUENTA, LA FECHA Y CERRAR SESION}
+      {/* VIEW DE LAS VINIETAS DE AJUSTES */}
 
-      <View style={{ flexWrap: 'wrap', backgroundColor: colors.border, marginVertical: 10, borderRadius: 30 }}>
+      <View style={{marginVertical:'25%'}}>
+        <View style={{ ...sty.containerStyle, backgroundColor: colors.border }}>
+          <View style={styles.boxText}>
+            <Text style={styles.titleConfig}> {ajustes}</Text>
 
-        <View style={styles.boxText}>
-          <Text style={styles.titleConfig} > Cuenta</Text>
-          <Text style={styles.varOption} >{'User Name'}</Text>
-          <Text>Email Asociado: {userEmail} </Text>
-          <ItemSeparator />
-          <Text style={styles.varOption} >{'05/10/2023'}</Text>
-          <Text>Fecha de registro</Text>
-          <Button title='Cerrar session' onPress={() => closedSession()} />
-        </View>
-      </View>
-
-
-
-      <View style={{ flexWrap: 'wrap', backgroundColor: colors.border, marginVertical: 10, borderRadius: 30 }}>
-        <View style={styles.boxText}>
-          <Text style={styles.titleConfig}> Ajustes</Text>
-          <View style={styles.itemConfig}>
-            <Icon name='lock-closed-outline' size={18} color={'black'} />
-            <Text style={{ marginHorizontal: 10, color: 'black' }} >Privacidad y Seguridad</Text>
-          </View>
-
-          <View style={styles.itemConfig}>
-            <Icon name='notifications-outline' size={18} color={'black'} />
-            <Text style={{ marginHorizontal: 10, color: 'black' }} >Notifficaciones y sonidos</Text>
-          </View>
-
-          <View style={styles.itemConfig}>
-            <Icon name="globe-outline" size={18} color="black" />
-            <TouchableOpacity onPress={() => openModal(<LanguageComponent />, 'Idioma')}>
-              <Text style={{ marginHorizontal: 10, color: 'black' }}>Idioma</Text>
+            <TouchableOpacity style={styles.itemConfig} onPress={() => openModal(<LanguageComponent />)}>
+              <Icon name="globe-outline" size={18} color="black" />
+              <Text style={styles.textConfig}>{idioma}</Text>
             </TouchableOpacity>
-          </View>
 
-          <View style={styles.itemConfig}>
-            <Icon name="color-fill-outline" size={18} color="black" />
-            <TouchableOpacity onPress={() => openModal(<ThemeComponent />, 'Temas de Aplicacion')}>
-              <Text style={{ marginHorizontal: 10, color: 'black' }}>Temas de Aplicacion</Text>
+            <TouchableOpacity style={styles.itemConfig} onPress={() => openModal(<ThemeComponent />)}>
+              <Icon name="color-fill-outline" size={18} color="black" />
+              <Text style={styles.textConfig} >{tema}</Text>
             </TouchableOpacity>
-          </View>
 
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={isModalVisible}
-            onRequestClose={toggleModal}
-          >
-            <View style={sty.modalBackground}>
-              <View style={sty.modalContent}>
-                <Text style={sty.modalTitle}>{modalTitle}</Text>
-                {modalComponent}
-                <Pressable onPress={toggleModal} style={sty.btnModal}>
-                  <Text style={sty.buttonText}>Cerrar</Text>
-                </Pressable>
+            <TouchableOpacity style={styles.itemConfig} onPress={toggleModalBooks}>
+              <Icon name='cloud-download-outline' size={18} color={'black'} />
+              <Text style={styles.textConfig}  >{archivos}</Text>
+              <ShowDownloadedBooks
+                isVisible={isDownloadedBooksModalVisible}
+                onClose={toggleModalBooks}
+              />
+            </TouchableOpacity>
+
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={isModalVisible}
+              onRequestClose={toggleModal}
+            >
+              <View style={sty.modalBackground}>
+                <View style={sty.modalContent}>
+                  <Text style={sty.modalTitle}>{modalTitle}</Text>
+                  {modalComponent}
+                  <Pressable onPress={toggleModal} style={sty.btnModal}>
+                    <Text style={sty.buttonText}> {close} </Text>
+                  </Pressable>
+                </View>
               </View>
-            </View>
-          </Modal>
-
-
-
-
-
-          <View style={styles.itemConfig}>
-            <Icon name='cloud-download-outline' size={18} color={'black'} />
-            <Text style={{ marginHorizontal: 10, color: 'black' }} >Archivos descargados</Text>
+            </Modal>
           </View>
-
         </View>
-      </View>
 
 
-      <View style={{ flexWrap: 'wrap', backgroundColor: colors.border, marginVertical: 10, borderRadius: 30 }}>
+        {/* <View style={{ ...sty.containerStyle, backgroundColor: colors.border }}>
 
         <View style={styles.boxText}>
-          <Text style={styles.titleConfig} > Ayuda</Text>
+          <Text style={styles.titleConfig} > {help}</Text>
 
           <View style={styles.itemConfig}>
             <Icon name='bug-outline' size={18} color={'black'} />
-            <Text style={{ marginHorizontal: 10, color: 'black' }} >Reporte de Bug</Text>
+            <Text style={styles.textConfig}  >{report}</Text>
           </View>
 
           <View style={styles.itemConfig}>
             <Icon name='shield-checkmark-outline' size={18} color={'black'} />
-            <Text style={{ marginHorizontal: 10, color: 'black' }} >Politica de privacidad</Text>
-          </View>
-
-          <View style={styles.itemConfig}>
-            <Icon name='help-circle-outline' size={18} color={'black'} />
-            <Text style={{ marginHorizontal: 10, color: 'black' }} >Preguntas frecuentes</Text>
+            <Text style={styles.textConfig}>{politica}</Text>
           </View>
 
         </View>
+      </View> */}
+
+        <View style={{ ...sty.containerStyle, backgroundColor: colors.border }}>
+
+          <View style={styles.boxText}>
+            <Text style={styles.titleConfig} > {donacion}</Text>
+
+            <TouchableOpacity onPress={() => openModal(<Donations paymentMethod='Paypal' />)}>
+              <View style={styles.itemConfig}>
+                <Icon name='logo-paypal' size={18} color={'black'} />
+                <Text style={styles.textConfig}  >PayPal</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => openModal(<Donations paymentMethod='Nequi' />)}>
+              <View style={styles.itemConfig}>
+                <Icon name='wallet-outline' size={18} color={'black'} />
+                <Text style={styles.textConfig}  >Nequi</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => openModal(<Donations paymentMethod='BTC' />)}>
+              <View style={styles.itemConfig}>
+                <Icon name='logo-bitcoin' size={18} color={'black'} />
+                <Text style={styles.textConfig}  >BTC Bitcoin</Text>
+              </View>
+            </TouchableOpacity>
+
+
+          </View>
+        </View>
       </View>
     </View>
+
+
   )
 }
 
-const sty = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalBackground: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalContent: {
-    width: '80%',
-    height: '25%',
-    backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 10,
-  },
-  btnModal: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 10,
-    top: '30%',
-    borderRadius: 5,
-    elevation: 3,
-  },
-  buttonText: {
-    color: 'black',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  modalTitle:{
-    color: 'black',
-    fontSize: 14
-  }
-});
+

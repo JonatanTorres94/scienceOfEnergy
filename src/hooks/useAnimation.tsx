@@ -6,6 +6,8 @@ export const useAnimation = () => {
 
     const opacity = useRef(new Animated.Value(0)).current
     const height = useRef(new Animated.Value(-150)).current
+    const positionX = useRef(new Animated.Value(-150)).current;
+    const positionX2 = useRef(new Animated.Value(150)).current;
 
     const fadeIn = () => {
         Animated.timing(
@@ -27,6 +29,7 @@ export const useAnimation = () => {
                 easing: Easing.bounce
             }
         ).start()
+
     }
 
     const fadeOut = () => {
@@ -49,12 +52,34 @@ export const useAnimation = () => {
             }
         ).start()
     }
+
+    const moveRight = () =>{
+
+      Animated.timing(positionX, {
+          toValue: 250, // Cambia este valor para ajustar la distancia del desplazamiento
+          duration: 2000,
+          useNativeDriver: true,
+      }).start();
+    }
+
+    const moveLeft = () =>{
+
+        Animated.timing(positionX2, {
+            toValue: -120, // Cambia este valor para ajustar la distancia del desplazamiento
+            duration: 2000,
+            useNativeDriver: true,
+        }).start();
+      }
     return {
 
         fadeIn,
         fadeOut,
         opacity,
-        height
+        height,
+        positionX,
+        positionX2,
+        moveRight,
+        moveLeft
 
     }
 }

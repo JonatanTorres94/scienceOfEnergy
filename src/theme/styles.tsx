@@ -174,10 +174,11 @@ export const styles = StyleSheet.create({
 
   //Config
   titleConfig: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: '700',
     marginHorizontal: 20,
-    marginTop: 13,
+    marginTop: 10,
+    marginBottom:10,
     color: colors.titleText
   },
   boxText: {
@@ -190,8 +191,14 @@ export const styles = StyleSheet.create({
   },
   itemConfig: {
     flexDirection: 'row',
-    marginVertical: 5,
+    marginVertical: 8,
     alignItems: 'center'
+  },
+  textConfig: {
+    marginHorizontal: 10,
+    color: 'black',
+    fontSize: 16
+
   },
 
 
@@ -229,10 +236,54 @@ export const styles = StyleSheet.create({
     color: colors.text,
     flexDirection: 'row'
   },
-  closedModal:{
+  closedModal: {
     position: 'relative',
     left: '85%',
     marginBottom: 10
 
+  }
+});
+
+export const sty = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalBackground: {
+    flex: 1, 
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    width: '85%',
+    height: '25%',
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+  },
+  btnModal: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    top: '30%',
+    borderRadius: 5,
+    elevation: 3,
+  },
+  buttonText: {
+    color: 'black',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  modalTitle: {
+    color: 'black',
+    fontSize: 14
+  }, containerStyle: {
+    flexWrap: 'wrap',
+    marginVertical: 10,
+    marginHorizontal:10,
+    borderRadius: 30,
+    width: '95%'
   }
 });

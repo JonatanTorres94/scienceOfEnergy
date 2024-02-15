@@ -2,22 +2,18 @@ import React, { useContext } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native';
 import { colors } from '../theme/colors';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/Store';
+
 
 export const ThemeComponent = () => {
     const { theme, setDarkTheme, setLightTheme } = useContext(ThemeContext)
-
-    const toggleTheme = () => {
-        if (theme.currentTheme === 'light') {
-            setDarkTheme();
-        } else {
-            setLightTheme();
-        }
-    };
-
+    const language = useSelector((state: RootState) => state.language);
+    const title = (language === 'Spanish') ? 'Seleccione tema de aplicacion:' : (language === 'English') ? 'Select application theme:' : 'Selecione o tema de aplicação:'
 
     return (
         <View>
-            <Text style={{color: 'black', fontSize:16}}>Seleccione tema de aplicacion:</Text>
+            <Text style={{color: 'black', fontSize:18}}> {title} </Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-around', top: '10%' }}>
 
                 <TouchableOpacity

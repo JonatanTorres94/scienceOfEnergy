@@ -18,6 +18,8 @@ import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { RegisterScreen } from '../screens/RegisterScreen';
 import { BooksView } from '../screens/BooksView';
 import { ProtectivePractices } from '../screens/ProtectivePractices';
+import { TheThirdState } from '../screens/TheThirdState';
+import { IntroductionToGnosis } from '../screens/IntroductionToGnosis';
 
 
 type RootStackParamList = {
@@ -33,6 +35,8 @@ type RootStackParamList = {
     RegisterScreen: undefined;
     BooksView: {url:string}
     ProtectivePractices: undefined;
+    TheThirdState: undefined;
+    IntroductionToGnosis: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -121,6 +125,8 @@ export const HomeStack = () => {
             <Stack.Screen name='RegisterScreen' component={RegisterScreen} />
             <Stack.Screen name='BooksView' component={BooksView} />
             <Stack.Screen name='ProtectivePractices' component={ProtectivePractices} />
+            <Stack.Screen name= 'TheThirdState' component={TheThirdState} />
+            <Stack.Screen name='IntroductionToGnosis' component={IntroductionToGnosis} />
         </Stack.Navigator>
     );
 }

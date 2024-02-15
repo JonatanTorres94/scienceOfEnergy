@@ -3,32 +3,46 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { GoBack } from '../components/GoBack';
 import ModalSelector from 'react-native-modal-selector';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
-import {  dataForCircle, dataForConjuracionSiete, dataForJupiter, dataForPentalfa, dataForProtec, dataForSwastica, dataForTetragramaton } from '../data/ProtectiveData';
+import { dataForCircle, dataForConjuracionSiete, dataForJupiter, dataForPentalfa, dataForProtec, dataForSwastica, dataForTetragramaton } from '../data/ProtectiveData';
 import { PracticesModule } from '../components/PracticesModule';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/Store';
 
 export const ProtectivePractices = () => {
+
     const [selectedItem, setSelectedItem] = useState<string | null>(null);
     const [selectedData, setSelectedData] = useState<any>(null);
     const { theme: { colors } } = useContext(ThemeContext)
+    const language = useSelector((state: RootState) => state.language);
+    const option = (language === 'Spanish') ? 'selecciona una opcion' : (language === 'English') ? 'select an option' : 'selecione uma opção';
 
     const menuItems = [
         { key: 1, label: "Pentalfa" },
-        { key: 2, label: "Circulo Magico" },
-        { key: 3, label: "Conjuracion de Jupiter" },
+        { key: 2, label: (language === 'Spanish') ? 'Círculo Mágico' : (language === 'English') ? 'Magic Circle' : 'Círculo Mágico' },
+        { key: 3, label: (language === 'Spanish') ? 'Conjuración de Júpiter' : (language === 'English') ? 'Jupiter Conjuration' : 'Conjuração de Júpiter' },
         { key: 4, label: "Tetragramaton" },
-        { key: 5, label: "Limpieza con Swastica" },,
-        { key: 6, label: "Conjuracion de los 7" },
-        { key: 7, label: "Conjuro contra el Peligro" },
+        { key: 5, label: (language === 'Spanish') ? 'Limpieza con Esvástica' : (language === 'English') ? 'Swastika cleaning' : 'Limpeza de suástica' },
+        { key: 6, label: (language === 'Spanish') ? 'Conjuracion de los 7' : (language === 'English') ? 'Conjuration of the 7' : 'Conjuração dos 7' },
+        { key: 7, label: (language === 'Spanish') ? 'Conjuro contra el Peligro' : (language === 'English') ? 'Spell against Danger' : 'Feitiço contra o perigo' },
     ];
 
     const dataMap: Record<string, any> = {
         Pentalfa: dataForPentalfa,
-        "Circulo Magico": dataForCircle,
-        "Conjuracion de Jupiter": dataForJupiter,
+        "Círculo Mágico": dataForCircle,
+        "Magic Circle": dataForCircle,
+        "Conjuración de Júpiter": dataForJupiter,
+        "Jupiter Conjuration": dataForJupiter,
+        "Conjuração de Júpiter": dataForJupiter,
         Tetragramaton: dataForTetragramaton,
-        "Limpieza con Swastica": dataForSwastica,
+        "Limpieza con Esvástica": dataForSwastica,
+        "Swastika cleaning": dataForSwastica,
+        "Limpeza de suástica": dataForSwastica,
         "Conjuracion de los 7": dataForConjuracionSiete,
-        "Conjuro contra el Peligro":  dataForProtec
+        "Conjuration of the 7": dataForConjuracionSiete,
+        "Conjuração dos 7": dataForConjuracionSiete,
+        "Conjuro contra el Peligro": dataForProtec,
+        "Spell against Danger": dataForProtec,
+        "Feitiço contra o perigo": dataForProtec
     };
 
     const handleSelect = (option: { key: number, label: string }) => {
@@ -43,7 +57,9 @@ export const ProtectivePractices = () => {
             <GoBack />
             <View style={styles.container}>
                 <View style={styles.selectorContainer}>
-                    <Text style={{ ...styles.titleModal, color: colors.titleText}}>Practicas de Proteccion:</Text>
+                    <Text style={{ ...styles.titleModal, color: colors.titleText }}>
+                        {(language === 'Spanish') ? 'Practicas de proteccion:' : (language === 'English') ? 'Protective practices:' : 'Práticas de proteção:'}
+                    </Text>
                     <ModalSelector
                         optionTextStyle={{ color: 'blue' }}
                         //overlayStyle={{backgroundColor:'blue'}}
@@ -57,13 +73,12 @@ export const ProtectivePractices = () => {
                         <TextInput
                             style={styles.textInputDP}
                             editable={false}
-                            value={selectedItem || "Selecciona una opción"}
+                            value={selectedItem || option}
                         />
                     </ModalSelector>
                 </View>
-                {selectedItem && <PracticesModule ProtectiveDetail={selectedData}/>}
-                {/* {selectedItem == null && <PreViewDaily />}
-                selectedItem && <VideoModule videoDetails={selectedData} />}  */}
+                {selectedItem && <PracticesModule ProtectiveDetail={selectedData} />}
+
 
             </View>
         </View>
@@ -89,7 +104,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     titleModal: {
-        flex:1,
+        flex: 1,
         margin: 10,
         fontSize: 25,
         right: 10

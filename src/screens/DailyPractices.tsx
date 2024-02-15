@@ -12,10 +12,12 @@ import {
     dataForSacrificeForHumanity,
     dataForStudyOfTheWorks
 } from '../data/videosData'
-import { VideoModule } from '../components/VideoModule'; 
+import { VideoModule } from '../components/VideoModule';
 import { GoBack } from '../components/GoBack';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { PreViewDaily } from '../components/PreViewDaily';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/Store';;
 
 
 
@@ -23,29 +25,46 @@ export const DailyPractices: React.FC = () => {
     const [selectedItem, setSelectedItem] = useState<string | null>(null);
     const [selectedData, setSelectedData] = useState<any>(null);
     const { theme: { colors } } = useContext(ThemeContext)
+    const language = useSelector((state: RootState) => state.language);
+    const option = (language === 'Spanish') ? 'selecciona una opcion' : (language === 'English') ? 'select an option' : 'selecione uma opção';
 
     const menuItems = [
         { key: 1, label: "Pranayama" },
-        { key: 2, label: "Mantralizacion" },
-        { key: 3, label: "Lamaseria" },
-        { key: 4, label: "Alquimia Sexual" },
-        { key: 5, label: "Meditacion" },
-        { key: 6, label: "Desdoblamiento Asrtral" },
-        { key: 7, label: "Muerte En Marcha" },
-        { key: 8, label: "Estudio de las Obras" },
-        { key: 9, label: "Sacrificio por la Humanidad" },
+        { key: 2, label: (language === 'Spanish') ? 'Mantralizacion' : (language === 'English') ? 'Mantralization' : 'Mantralização' },
+        { key: 3, label: (language === 'Spanish') ? 'Lamaseria' : (language === 'English') ? 'Lamasery' : 'Lamaseria' },
+        { key: 4, label: (language === 'Spanish') ? 'Alquimia Sexual' : (language === 'English') ? 'Sexual Alchemy' : 'Alquimia Sexual' },
+        { key: 5, label: (language === 'Spanish') ? 'Meditacion' : (language === 'English') ? 'Meditation' : 'Meditação' },
+        { key: 6, label: (language === 'Spanish') ? 'Desdoblamiento Astral' : (language === 'English') ? 'Astral Splitting' : 'Divisão Astral' },
+        { key: 7, label: (language === 'Spanish') ? 'Muerte en marcha' : (language === 'English') ? 'Death on the march' : 'Morte em marcha' },
+        { key: 8, label: (language === 'Spanish') ? 'Estudio de las Obras' : (language === 'English') ? 'Study of the Works' : 'Estudo das Obras' },
+        { key: 9, label: (language === 'Spanish') ? 'Sacrificio por la humanidad' : (language === 'English') ? 'Sacrifice for humanity' : 'Sacrifício pela humanidade' },
+
     ];
 
     const dataMap: Record<string, any> = {
         Pranayama: dataForPranayama,
         Mantralizacion: dataForMantram,
+        Mantralization: dataForMantram,
+        Mantralização: dataForMantram,
         Lamaseria: dataForLamaseria,
+        Lamasery: dataForLamaseria,
         'Alquimia Sexual': dataForAlquimia,
+        'Sexual Alchemy': dataForAlquimia,
         Meditacion: dataForMeditation,
-        'Desdoblamiento Asrtral': dataForAstralSplitting,
+        Meditation: dataForMeditation,
+        Meditação: dataForMeditation,
+        'Desdoblamiento Astral': dataForAstralSplitting,
+        'Astral Splitting': dataForAstralSplitting,
+        'Divisão Astral': dataForAstralSplitting,
         'Muerte En Marcha': dataForDeathInProgress,
+        'Death on the march': dataForDeathInProgress,
+        'Morte em marcha': dataForDeathInProgress,
         'Estudio de las Obras': dataForStudyOfTheWorks,
+        'Study of the Works': dataForStudyOfTheWorks,
+        'Estudo das Obras': dataForStudyOfTheWorks,
         'Sacrificio por la Humanidad': dataForSacrificeForHumanity,
+        'Sacrifice for humanity': dataForSacrificeForHumanity,
+        'Sacrifício pela humanidade': dataForSacrificeForHumanity
     };
 
     const handleSelect = (option: { key: number, label: string }) => {
@@ -54,18 +73,20 @@ export const DailyPractices: React.FC = () => {
 
     };
 
-
     return (
         <View style={{ flex: 1, backgroundColor: colors.background }}>
+
             <GoBack />
             <View style={styles.container}>
                 <View style={styles.selectorContainer}>
-                    <Text style={{ ...styles.titleModal, color: colors.titleText }}>Practicas diarias:</Text>
+                    <Text style={{ ...styles.titleModal, color: colors.titleText }}>
+                        {(language === 'Spanish') ? 'Practicas diarias:' : (language === 'English') ? 'Daily Practices:' : 'Práticas diárias:'}
+                    </Text>
                     <ModalSelector
                         optionTextStyle={{ color: 'red' }}
                         //overlayStyle={{backgroundColor:'blue'}}
                         data={menuItems}
-                        initValue="Selecciona una opción"
+                        initValue={(language === 'Spanish') ? 'seleccione una opción' : (language === 'English') ? 'select an option' : 'selecione uma opção'}
                         supportedOrientations={['landscape']}
                         accessible={true}
                         scrollViewAccessibilityLabel={'Scrollable options'}
@@ -74,11 +95,11 @@ export const DailyPractices: React.FC = () => {
                         <TextInput
                             style={styles.textInputDP}
                             editable={false}
-                            value={selectedItem || "Selecciona una opción"}
+                            value={selectedItem || option}
                         />
                     </ModalSelector>
                 </View>
-                {selectedItem == null && <PreViewDaily/>}
+                {selectedItem == null && <PreViewDaily />}
                 {selectedItem && <VideoModule videoDetails={selectedData} />}
 
             </View>

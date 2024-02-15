@@ -1,5 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {PayloadAction, createSlice} from '@reduxjs/toolkit'
 import { REHYDRATE } from 'redux-persist';
+
 
 const authSlice = createSlice({
 
@@ -7,7 +8,8 @@ const authSlice = createSlice({
     initialState:{
         user: null,
         idToken: null,
-        language: null
+        language: 'Spanish',
+        downloadedBooks: [] as string[] ,
     },
 
     reducers:{
@@ -23,14 +25,19 @@ const authSlice = createSlice({
         setLanguage:(state,action)=>{
             (state.language) = action.payload
         },
+        setDownloadedBooks: (state, action:PayloadAction<string>) => {
+            state.downloadedBooks = [...state.downloadedBooks,action.payload];
+            
+        },
         [REHYDRATE]: (state, action) => {
             // Manejar la rehidratación aquí, por ejemplo:
             state.user = action.payload?.auth?.user || null;
             state.idToken = action.payload?.auth?.idToken || null;
             state.language = action.payload?.auth?.language || null;
+            state.downloadedBooks = action.payload?.auth?.downloadedBooks || [];
           },
     }
 })
 
-export const {setIdToken,setUser,clearUser,setLanguage} = authSlice.actions
+export const {setIdToken,setUser,clearUser,setLanguage,setDownloadedBooks } = authSlice.actions
 export default authSlice.reducer

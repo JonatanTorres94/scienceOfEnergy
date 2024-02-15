@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect, useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Dimensions } from 'react-native';
 import Video from 'react-native-video';
 import { videoInterface } from '../interfaces/interfaces';
-import { colors } from '../theme/colors';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store';
@@ -64,7 +63,7 @@ export const VideoModule = ({ videoDetails: { videoUrl, text, title, titleEn, ti
           }
         </Text>
 
-        <Text style={{ ...styles.paragraph, color: colors.titleText }}>
+        <Text style={{ ...styles.paragraph, color: colors.globalText }}>
           {
             language === 'Spanish' ? text :
             language === 'English' ? textEn :
