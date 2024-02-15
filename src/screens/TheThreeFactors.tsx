@@ -13,10 +13,10 @@ export const TheThreeFactors = () => {
 
     const { theme: { colors } } = useContext(ThemeContext)
     const language = useSelector((state: RootState) => state.language);
-    const [showVideoIndex, setShowVideoIndex] = useState<number | null>(null);
+    const [showVideoIndex, setShowVideoIndex] = useState<number | null>();
 
-    const toggleVideoView = (index: number | null) => {
-        setShowVideoIndex(showVideoIndex === index ? null : index);
+    const toggleVideoView = (index: number ) => {
+        setShowVideoIndex(showVideoIndex == index ? null : index);
     };
 
 
@@ -38,9 +38,9 @@ export const TheThreeFactors = () => {
                             {item.subtitle ? <Text style={{ ...styles.subtitle, color: colors.titleText }}>{item.subtitle}</Text> : null}
                             <Text style={{ ...styles.text, color: colors.globalText }}>{item.text}</Text>
                             <TouchableOpacity onPress={() => toggleVideoView(index)} style={{alignSelf:'center'}}>
-                                <Icon name='videocam-outline' size={35} color={'black'} />
+                                <Icon name='videocam-outline' size={35} color={colors.primary} />
                             </TouchableOpacity>
-                            {showVideoIndex === index && <OnlyVideo url={item.videoUrl} />}
+                            {showVideoIndex == index && <OnlyVideo url={item.videoUrl} />}
                         </View>
                     ))
                 ) : language === 'English' ? (

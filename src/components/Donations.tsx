@@ -101,6 +101,7 @@ const donationsStyles = StyleSheet.create({
     title: {
         marginBottom: 10,
         fontSize: 16,
+        color: 'black'
     },
     contentContainer: {
         flexDirection: 'row',
@@ -109,6 +110,7 @@ const donationsStyles = StyleSheet.create({
     email: {
         marginRight: 1,
         fontSize: 16,
+        color: 'black'
     },
     button: {
         flexDirection: 'row',

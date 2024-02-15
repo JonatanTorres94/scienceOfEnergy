@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Animated, ImageSourcePropType, Text, TouchableOpacity, View } from 'react-native'
+import { Animated, ImageSourcePropType, Linking, Text, TouchableOpacity, View } from 'react-native'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 import { Dimensions } from 'react-native'
 import { Image } from 'react-native'
@@ -40,11 +40,21 @@ const items: Slide[] = [
 
 export const SlidesScreen = () => {
 
+    
+
     const [activeIndex, setActiveIndex] = useState(0)
     const { opacity, fadeIn } = useAnimation()
     const isVisible = useRef(false)
 
     const navigation = useNavigation();
+
+    const handlePress = () => {
+        // URL del canal de Telegram al que se desea redirigir
+        const telegramChannelUrl = 'https://t.me/+hrWdtRrXG1Y3ZGQx';
+    
+        // Abre el enlace en la aplicación de navegador predeterminada
+        Linking.openURL(telegramChannelUrl);
+      };
 
     const renderItem = (item: Slide) => {
         return (
@@ -120,7 +130,7 @@ export const SlidesScreen = () => {
                     }}
                     onPress={() => {
                         if(isVisible.current) {
-                            navigation.navigate("LoginScreen" as never) 
+                            handlePress()
                         }
                     }}
                     >
@@ -152,6 +162,8 @@ const styles = StyleSheet.create({
         color: '#5856D6'
     },
     subTitle: {
-        fontSize: 16
+        fontSize: 16,
+        color: 'black'
+        
     }
 })

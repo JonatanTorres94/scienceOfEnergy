@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 10,
         textAlign: 'center',
+        color:'black'
     },
     scrollView: {
         maxHeight: 200,
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     },
     bookName: {
         marginBottom: 5,
+        color:'grey'
     },
     buttonContainer: {
         alignItems: 'center',
