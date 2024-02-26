@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { GoBack } from '../components/GoBack';
 import { HeaderText } from '../components/HeaderText';
 import { textData, textDataEnglish, textDataPortuguese } from '../data/textData';
@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { OnlyVideo } from '../components/OnlyVideo';
+import { Redirection } from '../components/Redirection';
 
 export const TheThreeFactors = () => {
 
@@ -15,10 +16,17 @@ export const TheThreeFactors = () => {
     const language = useSelector((state: RootState) => state.language);
     const [showVideoIndex, setShowVideoIndex] = useState<number | null>();
 
-    const toggleVideoView = (index: number ) => {
+    const toggleVideoView = (index: number) => {
         setShowVideoIndex(showVideoIndex == index ? null : index);
     };
 
+    const handlePress = () => {
+        // URL del canal de Telegram al que se desea redirigir
+        const youtubeButton = 'https://youtube.com/watch?v=H5XK6iYRj_k&ab_channel=CienciadelEnergismo%28Gnosis%29';
+
+        // Abre el enlace en la aplicación de navegador predeterminada
+        Linking.openURL(youtubeButton);
+    };
 
 
     return (
@@ -37,7 +45,7 @@ export const TheThreeFactors = () => {
                         <View key={index}>
                             {item.subtitle ? <Text style={{ ...styles.subtitle, color: colors.titleText }}>{item.subtitle}</Text> : null}
                             <Text style={{ ...styles.text, color: colors.globalText }}>{item.text}</Text>
-                            <TouchableOpacity onPress={() => toggleVideoView(index)} style={{alignSelf:'center'}}>
+                            <TouchableOpacity onPress={() => toggleVideoView(index)} style={{ alignSelf: 'center' }}>
                                 <Icon name='videocam-outline' size={35} color={colors.primary} />
                             </TouchableOpacity>
                             {showVideoIndex == index && <OnlyVideo url={item.videoUrl} />}
@@ -50,6 +58,7 @@ export const TheThreeFactors = () => {
                             <Text style={{ ...styles.text, color: colors.globalText }}>{item.text}</Text>
                         </View>
                     ))
+
                 ) : language === 'Portuguese' ? (
                     textDataPortuguese.map((item, index) => (
                         <View key={index}>
@@ -61,7 +70,21 @@ export const TheThreeFactors = () => {
                     <Text>No se encontraron datos para el idioma seleccionado.</Text>
                 )}
 
+                <View>
+                    {
+                        (language === 'English') ?
+                            <Redirection  />
+                            : (language === 'Portuguese') ?
+                                <Redirection />
+                                : ''
+                    }
+                </View>
+
+
             </ScrollView>
+
+
+
 
 
         </View>

@@ -18,9 +18,9 @@ export const OccultMasters: OccultMastersInterface[] = [
     {
         name: 'Ludwig van Beethoven',
         cover: require('../images/beethoven.png'),
-        musicalWorks: ['Sinfonía n.º 1','Sinfonía n.º 2','Sinfonía n.º 3','Sinfonía n.º 4','Sinfonía n.º 5','Concierto para piano n.º 1','symphonie no. 9 d-moll, op. 125 "ode an die freude": ii. scherzo','Grosse fugue','Misa en do mayor','Obertura Coriolano','Fidelio','Marcha turca','Sonata para piano n.º 23'],
-        musicalWorksEn: ['Symphony No. 1', 'Symphony No. 2', 'Symphony No. 3', 'Symphony No. 4', 'Symphony No. 5', 'Piano Concerto No. 1', 'symphonie no. 9 d-moll, op. 125 "ode an die freude": ii. scherzo','Grosse fugue','Mass in C major','Coriolanus Overture','Fidelio','Turkish March','Piano Sonata No. 23'],
-        musicalWorksPr: ['Sinfonia nº 1', 'Sinfonia nº 2', 'Sinfonia nº 3', 'Sinfonia nº 4', 'Sinfonia nº 5', 'Concerto para piano nº 1', 'Sinfonia nº. 9 d-moll, op. 125 "ode an die freude": ii. scherzo','Fuga grossa','Missa em dó maior','Abertura de Coriolano','Fidélio','Marcha Turca','Sonata para piano nº 23']
+        musicalWorks: ['Sinfonía n.º 1','Sinfonía n.º 2','Sinfonía n.º 3','Sinfonía n.º 4','Sinfonía n.º 5','Concierto para piano n.º 1','Symphony No. 9 in D minor scherzo','Grosse fugue','Misa en do mayor','Obertura Coriolano','Fidelio','Marcha turca','Sonata para piano n.º 23'],
+        musicalWorksEn: ['Symphony No. 1', 'Symphony No. 2', 'Symphony No. 3', 'Symphony No. 4', 'Symphony No. 5', 'Piano Concerto No. 1', 'Symphony No. 9 in D minor scherzo','Grosse fugue','Mass in C major','Coriolanus Overture','Fidelio','Turkish March','Piano Sonata No. 23'],
+        musicalWorksPr: ['Sinfonia nº 1', 'Sinfonia nº 2', 'Sinfonia nº 3', 'Sinfonia nº 4', 'Sinfonia nº 5', 'Concerto para piano nº 1', 'Symphony No. 9 in D minor scherzo','Fuga grossa','Missa em dó maior','Abertura de Coriolano','Fidélio','Marcha Turca','Sonata para piano nº 23']
     },
     {
         name:'Frédéric Chopin',
@@ -53,9 +53,9 @@ export const OccultMasters: OccultMastersInterface[] = [
     {
         name:'Wolfgang Amadeus Mozart',
         cover: require('../images/mozart.png'),
-        musicalWorks: ['Réquiem','La flauta mágica','Eine kleine Nachtmusik','Sinfonía n.º 40','Las bodas de Fígaro','Sonata para dos pianos en re mayor','Gran misa en do menor','Misa de la Coronación','Ave verum corpus','Così fan tutte','Concierto para piano n.º 23','Doce variaciones sobre «Ah vous dirai-je, Maman»','Don Giovanni'],
-        musicalWorksEn: ['Requiem', 'The Magic Flute', 'Eine kleine Nachtmusik', 'Symphony No. 40', 'The Marriage of Figaro', 'Sonata for Two Pianos in D Major', 'Great Mass in C Minor',' Coronation Mass','Ave verum corpus','Così fan tutte','Piano Concerto No. 23','Twelve variations on «Ah vous dirai-je, Maman»','Don Giovanni'],
-        musicalWorksPr: ['Requiem', 'A Flauta Mágica', 'Eine kleine Nachtmusik', 'Sinfonia No. 40', 'As Bodas de Fígaro', 'Sonata para Dois Pianos em Ré Maior', 'Grande Missa em Dó Menor', 'Coroação Missa','Ave verum corpus','Così fan tutte','Concerto para piano nº 23','Doze variações de «Ah vous dirai-je, Maman»','Don Giovanni'],
+        musicalWorks: ['Réquiem','La flauta mágica','Eine kleine Nachtmusik','Sinfonía n.º 40','Las bodas de Fígaro','Sonata para dos pianos en re mayor','Gran misa en do menor','Misa de la Coronación','Ave verum corpus','Così fan tutte','Concierto para piano n.º 23','Ah vous dirai-je, Maman','Don Giovanni'],
+        musicalWorksEn: ['Requiem', 'The Magic Flute', 'Eine kleine Nachtmusik', 'Symphony No. 40', 'The Marriage of Figaro', 'Sonata for Two Pianos in D Major', 'Great Mass in C Minor',' Coronation Mass','Ave verum corpus','Così fan tutte','Piano Concerto No. 23','Ah vous dirai-je, Maman','Don Giovanni'],
+        musicalWorksPr: ['Requiem', 'A Flauta Mágica', 'Eine kleine Nachtmusik', 'Sinfonia No. 40', 'As Bodas de Fígaro', 'Sonata para Dois Pianos em Ré Maior', 'Grande Missa em Dó Menor', 'Coroação Missa','Ave verum corpus','Così fan tutte','Concerto para piano nº 23','Ah vous dirai-je, Maman','Don Giovanni'],
     },
     {
         name:'Piotr Ilich Chaikovski',
@@ -67,9 +67,9 @@ export const OccultMasters: OccultMastersInterface[] = [
     {
         name:'Giuseppe Verdi',
         cover: require('../images/verdi.png'),
-        musicalWorks: ['La traviata','Aida','Réquiem','Va, pensiero','El trovador','La fuerza del destino','Un baile de máscaras','Simón Boccanegra','Las vísperas sicilianas','atto i, scena 1. scena: “ritorna vincitor!” – “e l´amor mio','Jerusalén','El corsario','Coro del yunque'],
-        musicalWorksEn: ['La traviata', 'Aida', 'Requiem', 'Va, pensiero', 'The troubadour', 'The force of destiny', 'A masked ball', 'Simon Boccanegra', 'The Sicilian Vespers',' atto i, scene 1. scene: “ritorna vincitor!” – “e l´amor mio','Jerusalem','The Corsair','Chorus of the Anvil'],
-        musicalWorksPr: ['La traviata', 'Aida', 'Requiem', 'Va, pensiero', 'O trovador', 'A força do destino', 'Um baile de máscaras', 'Simon Boccanegra', 'As Vésperas Sicilianas',' atto eu, cena 1. cena: “ritorna vincitor!” – “e l´amor mio','Jerusalém','O Corsário','Coro da Bigorna'],
+        musicalWorks: ['La traviata','Aida','Réquiem','Va, pensiero','El trovador','La fuerza del destino','Un baile de máscaras','Simón Boccanegra','Las vísperas sicilianas','ritorna vincitor','Jerusalén','El corsario','Coro del yunque'],
+        musicalWorksEn: ['La traviata', 'Aida', 'Requiem', 'Va, pensiero', 'The troubadour', 'The force of destiny', 'A masked ball', 'Simon Boccanegra', 'The Sicilian Vespers','ritorna vincitor','Jerusalem','The Corsair','Chorus of the Anvil'],
+        musicalWorksPr: ['La traviata', 'Aida', 'Requiem', 'Va, pensiero', 'O trovador', 'A força do destino', 'Um baile de máscaras', 'Simon Boccanegra', 'As Vésperas Sicilianas','ritorna vincitor','Jerusalém','O Corsário','Coro da Bigorna'],
     },
     {
         name:'Richard Wagner',

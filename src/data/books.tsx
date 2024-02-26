@@ -20,9 +20,9 @@ export const BooksVM: BooksItems[] = [
         urlPr:'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/Confer%C3%AAncia%20fase%20B.pdf?alt=media&token=704c11f6-0d2e-4838-a084-5bd64985c801'
     },
     {
-        name: 'Sí: Hay infierno, Diablo y Karma',
-        nameEn:'Yes: There is hell, Devil and Karma',
-        namePr:'Sim: existe o inferno, Diabo e Karma',
+        name: 'Si Hay infierno, Diablo y Karma',
+        nameEn:'Yes There is hell, Devil and Karma',
+        namePr:'Sim existe o inferno, Diabo e Karma',
         cover: require('../images/book04.png'),
         url: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/Si%20hay%20infierno%2C%20diablo%20y%20karma.pdf?alt=media&token=6da0a805-8f40-4ce5-b76b-fd27f6089fd5',
         urlEn:'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/Yes%20There%20is%20hell%20Devil%20and%20Karma.pdf?alt=media&token=f4e537c6-6356-45cf-bfba-3c56e3c1f0d1',

@@ -30,6 +30,34 @@ export const PortBooks = ({ books: { name, nameEn, namePr, cover, description, u
         navigation.navigate('BooksView' as never, { url });
     };
 
+    const getLocalizedUrl = () => {
+        switch (language) {
+            case 'Spanish':
+                return url;
+            case 'English':
+                return urlEn;
+            case 'Portuguese':
+                return urlPr;
+            default:
+                return url; // En caso de que el idioma no esté definido correctamente, se usa la URL predeterminada
+        }
+    };
+
+    const getLocalizedName = () => {
+        switch (language) {
+            case 'Spanish':
+                return name;
+            case 'English':
+                return nameEn;
+            case 'Portuguese':
+                return namePr;
+            default:
+                return name; // En caso de que el idioma no esté definido correctamente, se usa el nombre predeterminado
+        }
+    };
+
+
+    const localizedUrl = getLocalizedUrl();
 
 
 
@@ -62,8 +90,8 @@ export const PortBooks = ({ books: { name, nameEn, namePr, cover, description, u
                         style={{ margin: 12, marginTop: 15 }}
                         onPress={() => {
                             DownloadFiles({
-                                uri: url,
-                                name,
+                                uri: localizedUrl,
+                                name: getLocalizedName(),
                                 onDownloadComplete: () => dispatch(setDownloadedBooks(name)),
                             });
                         }}

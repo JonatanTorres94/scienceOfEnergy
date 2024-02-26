@@ -3,17 +3,17 @@ export const textData = [
   {
     subtitle: 'Primer Factor',
     text: 'El Nacimiento Espiritual implica crear siete cuerpos existenciales a través del sexo con una pareja estable que colabore en el proceso. La Energía Creadora Sexual es fundamental en este trabajo, que se realiza en un lugar especial y cuidado, como un lecho nupcial.',
-    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/sacrificio.mp4?alt=media&token=8eadbac4-aa65-48fd-8af9-cf162544cd5c'
+    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/primer_factor.mp4?alt=media&token=3db5939f-81de-4492-88e2-4423ed44a6e2'
   },
   {
     subtitle: 'El Segundo Factor',
     text: 'El Segundo Factor es la Muerte Psicológica, que implica liberar la Energía Creadora Sexual atrapada por el yo psicológico. Requiere autoobservación para distinguir los actos del Ego, la personalidad y la Conciencia, y luego pedir a la Madre Divina que desintegre los defectos.',
-    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/gnosis.mp4?alt=media&token=b54845a6-5097-48f0-ac71-8b794ab1967f'
+    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/segundo_factor.mp4?alt=media&token=a494957c-5e94-4739-9b5c-fefdf2c278c3'
   },
   {
     subtitle: 'El Tercer Factor',
     text: 'Es el Sacrificio por la Humanidad, que implica compartir el conocimiento de manera desinteresada con toda la humanidad, sin importar diferencias. Este conocimiento debe entregarse sin expectativas a cambio y sin mezclarlo con otros conocimientos esotéricos o subjetivos. La sabiduría es esencial para despertar la Conciencia y comprender el propósito de la existencia.',
-    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/transmutacion_cosmica.mp4?alt=media&token=2b31d4c9-0cc3-4cef-a161-26a96f6257ee'
+    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/cienciadelenergismo-bd5aa.appspot.com/o/tercer_factor.mp4?alt=media&token=2572d4be-9efd-4813-b31a-92f8655ca446'
   },
 
 ];
@@ -90,3 +90,25 @@ export const TextTranslator = [
     theThirdPortu:'Esta seção é de vital importância, por isso decidimos destacar este livro, separando-o da seção principal dos livros de VM. O terceiro estado de consciência é a prática fundamental que todo aspirante gnóstico deve realizar 24 horas por dia, 7 dias por semana. A seguir, oferecemos este livro para que você possa ler, estudar e meditar sobre ele.'
   }
 ]
+
+export const textIntroductionData = [
+  {
+    text: 'Aquí te mostraremos el CAMINO SECRETO que conduce a LA MAGIA BLANCA, a despertar tus poderes psíquicos, tus facultades ocultas y a lograr vencer la muerte por una eternidad, pues tenemos la clave de la PIEDRA FILOSOFAL, que le permite a alguien conservar su cuerpo físico por miles de años sin envejecer o morir. Este secreto ha sido ocultado a las muchedumbres, pero aquel que lo encuentra ha hallado EL SECRETO MÁS GUARDADO DE LA HUMANIDAD.'
+  },
+
+];
+
+export const textIntroductionDataEnglish = [
+  {
+    text: 'Here we will show you the SECRET PATH that leads to WHITE MAGIC, to awaken your psychic powers, your hidden faculties and to manage to defeat death for an eternity, because we have the key to the PHILOSOPHER´S STONE, which allows someone to keep their physical body for thousands of years without aging or dying. This secret has been hidden from the crowds, but he who finds it has found THE MOST KEPT SECRET OF HUMANITY.'
+  },
+
+];
+
+export const textIntroductionDataPortu= [
+  {
+    
+    text: 'Aqui lhe mostraremos o CAMINHO SECRETO que leva à MAGIA BRANCA, para despertar seus poderes psíquicos, suas faculdades ocultas e conseguir derrotar a morte por uma eternidade, pois temos a chave da PEDRA FILOSÓFICA, que permite a alguém manter seu físico corpo por milhares de anos sem envelhecer ou morrer. Este segredo foi escondido das multidões, mas quem o encontra encontrou O SEGREDO MAIS GUARDADO DA HUMANIDADE.'
+  },
+
+];
