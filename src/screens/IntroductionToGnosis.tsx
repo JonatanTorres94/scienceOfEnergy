@@ -3,11 +3,9 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/Store';
 import { HeaderText } from '../components/HeaderText';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { GoBack } from '../components/GoBack';
 import { TextTranslator, textIntroductionData, textIntroductionDataEnglish, textIntroductionDataPortu } from '../data/textData';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
-import { colors } from '../../../../CoderHouse/ReactNative/ecomerceCoder/src/themes/colors';
 import { SocialNetworks } from '../components/SocialNetworks';
 import { ItemSeparator } from '../components/ItemSeparator';
 

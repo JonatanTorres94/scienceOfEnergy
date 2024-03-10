@@ -62,7 +62,7 @@ export const MusicCarousel = ({ OccultMaster: { name, cover, musicalWorks, music
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center' }}>
 
-                    <TouchableOpacity style={styles.botonFondoMusic} onPress={toggleAlert}>
+                    <TouchableOpacity style={styles.botonFondoMusic} onPress={toggleAlert} accessibilityLabel={`Copiar "${name}"`} >
 
                         <Icon name="musical-notes-outline" size={25} color="white" style={styles.icono} />
                         <Text style={styles.textoBoton}>
@@ -92,45 +92,54 @@ export const MusicCarousel = ({ OccultMaster: { name, cover, musicalWorks, music
                                 </TouchableOpacity>
 
                                 {
-                                    language == 'English' ? 
-                                    
-                                    (musicalWorksEn.map((work, index) => (
-                                        <View key={index} style={{ flexDirection: 'row' }}>
-                                            <Text style={styles.modalMessageMusic}>
-                                                {work}
-                                            </Text>
-                                            <View style={{ flex: 1 }}></View>
-                                            <TouchableOpacity onPress={() => copyToClipboard(work)}>
-                                                <Icon name="copy-outline" size={25} color="black" style={styles.icono} />
-                                            </TouchableOpacity>
+                                    language == 'English' ?
 
-                                        </View>
-                                    )))
-                                    : language == 'Portuguese' ?
-                                    (musicalWorksPr.map((work, index) => (
-                                        <View key={index} style={{ flexDirection: 'row' }}>
-                                            <Text style={styles.modalMessageMusic}>
-                                                {work}
-                                            </Text>
-                                            <View style={{ flex: 1 }}></View>
-                                            <TouchableOpacity onPress={() => copyToClipboard(work)}>
-                                                <Icon name="copy-outline" size={25} color="black" style={styles.icono} />
-                                            </TouchableOpacity>
+                                        (musicalWorksEn.map((work, index) => (
+                                            <View key={index} style={{ flexDirection: 'row' }}>
+                                                <Text style={styles.modalMessageMusic}>
+                                                    {work}
+                                                </Text>
+                                                <View style={{ flex: 1 }}></View>
+                                                <TouchableOpacity
+                                                    onPress={() => copyToClipboard(work)}
+                                                    accessibilityLabel={`Copiar "${work}"`}
+                                                >
+                                                    <Icon name="copy-outline" size={30} color="black" style={styles.icono} />
+                                                </TouchableOpacity>
 
-                                        </View>
-                                    ))) :
-                                    (musicalWorks.map((work, index) => (
-                                        <View key={index} style={{ flexDirection: 'row' }}>
-                                            <Text style={styles.modalMessageMusic}>
-                                                {work}
-                                            </Text>
-                                            <View style={{ flex: 1 }}></View>
-                                            <TouchableOpacity onPress={() => copyToClipboard(work)}>
-                                                <Icon name="copy-outline" size={25} color="black" style={styles.icono} />
-                                            </TouchableOpacity>
+                                            </View>
+                                        )))
+                                        : language == 'Portuguese' ?
+                                            (musicalWorksPr.map((work, index) => (
+                                                <View key={index} style={{ flexDirection: 'row' }}>
+                                                    <Text style={styles.modalMessageMusic}>
+                                                        {work}
+                                                    </Text>
+                                                    <View style={{ flex: 1 }}></View>
+                                                    <TouchableOpacity
+                                                        onPress={() => copyToClipboard(work)}
+                                                        accessibilityLabel={`Copiar "${work}"`}
+                                                    >
+                                                        <Icon name="copy-outline" size={30} color="black" style={styles.icono} />
+                                                    </TouchableOpacity>
 
-                                        </View>
-                                    )))
+                                                </View>
+                                            ))) :
+                                            (musicalWorks.map((work, index) => (
+                                                <View key={index} style={{ flexDirection: 'row' }}>
+                                                    <Text style={styles.modalMessageMusic}>
+                                                        {work}
+                                                    </Text>
+                                                    <View style={{ flex: 1 }}></View>
+                                                    <TouchableOpacity
+                                                        onPress={() => copyToClipboard(work)}
+                                                        accessibilityLabel={`Copiar "${work}"`}
+                                                    >
+                                                        <Icon name="copy-outline" size={30} color="black" style={styles.icono} />
+                                                    </TouchableOpacity>
+
+                                                </View>
+                                            )))
 
 
                                 }

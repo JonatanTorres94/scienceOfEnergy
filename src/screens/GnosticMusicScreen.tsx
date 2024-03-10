@@ -42,7 +42,7 @@ export const GnosticMusicScreen = () => {
         <View style={{ flex: 1, backgroundColor: colors.background }}>
             <GoBack />
             <ScrollView>
-                <HeaderText title='Musica Ocultista' />
+                <HeaderText title='Música Ocultista' />
                 <Text style={{ ...styles.titleMusic, color: colors.titleText }}>
                     { language == 'English' ? subTitle[2] : language == 'Portuguese' ? subTitle[4] : subTitle[0]}
                 </Text>

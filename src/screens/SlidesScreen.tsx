@@ -32,7 +32,7 @@ const items: SlideTranslations[] = [
         title: 'Comunicate',
         titleEn: 'communicate',
         titlePr: 'comunicar',
-        desc: 'En este apartado encontraras nuestro grupo donde podras comunicarte con los instructores de la Ciencia del Energismo',
+        desc: 'En este apartado encontrarás nuestro grupo donde podrás comunicarte con los instructores de la Ciencia del Energismo',
         descEn: 'In this section you will find our group where you can communicate with the instructors of the Science of Energism',
         descPr: 'Nesta seção você encontrará nosso grupo onde poderá se comunicar com os instrutores da Ciência do Energismo',
         img: require('../images/chatSlice01.png')
@@ -41,7 +41,7 @@ const items: SlideTranslations[] = [
         title: 'Respuestas',
         titleEn: 'Answers',
         titlePr: 'Respostas',
-        desc: 'El grupo es abierto, podras hacer tus consultas sobre la ciencia del energismo y el trabajo sobre los 3 factores',
+        desc: 'El grupo es abierto, podrás hacer tus consultas sobre la ciencia del energismo y el trabajo sobre los 3 factores',
         descEn: 'The group is open, you can ask your questions about the science of energy and the work on the 3 factors',
         descPr: 'O grupo é aberto, você pode tirar suas dúvidas sobre a ciência da energia e o trabalho dos 3 fatores',
         img: require('../images/chatSlice02.png')

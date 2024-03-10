@@ -62,7 +62,7 @@ export const Donations = ({ paymentMethod }: Props) => {
         case 'BTC':
             switch (language) {
                 case 'Spanish':
-                    desc = 'Puedes realizar un envio de criptomonedas en nuestra direccion de BTC: '
+                    desc = 'Puedes realizar un envío de criptomonedas en nuestra dirección de BTC: '
                     dir = 'Click para copiar'
 
                     break;

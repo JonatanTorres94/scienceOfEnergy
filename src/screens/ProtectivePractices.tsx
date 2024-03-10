@@ -22,7 +22,7 @@ export const ProtectivePractices = () => {
         { key: 3, label: (language === 'Spanish') ? 'Conjuración de Júpiter' : (language === 'English') ? 'Jupiter Conjuration' : 'Conjuração de Júpiter' },
         { key: 4, label: "Tetragramaton" },
         { key: 5, label: (language === 'Spanish') ? 'Limpieza con Esvástica' : (language === 'English') ? 'Swastika cleaning' : 'Limpeza de suástica' },
-        { key: 6, label: (language === 'Spanish') ? 'Conjuracion de los 7' : (language === 'English') ? 'Conjuration of the 7' : 'Conjuração dos 7' },
+        { key: 6, label: (language === 'Spanish') ? 'Conjuración de los 7' : (language === 'English') ? 'Conjuration of the 7' : 'Conjuração dos 7' },
         { key: 7, label: (language === 'Spanish') ? 'Conjuro contra el Peligro' : (language === 'English') ? 'Spell against Danger' : 'Feitiço contra o perigo' },
     ];
 
@@ -58,7 +58,7 @@ export const ProtectivePractices = () => {
             <View style={styles.container}>
                 <View style={styles.selectorContainer}>
                     <Text style={{ ...styles.titleModal, color: colors.titleText }}>
-                        {(language === 'Spanish') ? 'Practicas de proteccion:' : (language === 'English') ? 'Protective practices:' : 'Práticas de proteção:'}
+                        {(language === 'Spanish') ? 'Prácticas de protección:' : (language === 'English') ? 'Protective practices:' : 'Práticas de proteção:'}
                     </Text>
                     <ModalSelector
                         optionTextStyle={{ color: 'blue' }}

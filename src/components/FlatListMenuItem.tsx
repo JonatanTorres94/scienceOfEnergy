@@ -9,7 +9,6 @@ import { styles } from '../theme/styles';
 import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store';
-// import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 
 interface Props {

@@ -23,7 +23,7 @@ export const menuItems: MenuItem[] = [
         component: 'BooksOfTheVM'
     },
     {
-        name: 'Practicas Diarias',
+        name: 'Prácticas Diarias',
         nameEn: 'Daily Practices',
         namePr:'Práticas Diárias',
         icon: 'star-sharp',
@@ -37,7 +37,7 @@ export const menuItems: MenuItem[] = [
         component: 'GnosticMusicScreen'
     },
     {
-        name: 'Practicas de Proteccion',
+        name: 'Prácticas de Protección',
         nameEn:'Protective Practices',
         namePr:'Práticas de Proteção',
         icon: 'star-sharp',

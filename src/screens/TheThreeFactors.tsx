@@ -46,7 +46,7 @@ export const TheThreeFactors = () => {
                             {item.subtitle ? <Text style={{ ...styles.subtitle, color: colors.titleText }}>{item.subtitle}</Text> : null}
                             <Text style={{ ...styles.text, color: colors.globalText }}>{item.text}</Text>
                             <TouchableOpacity onPress={() => toggleVideoView(index)} style={{ alignSelf: 'center' }}>
-                                <Icon name='videocam-outline' size={35} color={colors.primary} />
+                                <Icon name='videocam-outline' size={48} color={colors.primary} />
                             </TouchableOpacity>
                             {showVideoIndex == index && <OnlyVideo url={item.videoUrl} />}
                         </View>

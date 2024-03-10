@@ -228,7 +228,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     marginHorizontal: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    height: 48
   },
   modalMessageMusic: {
     fontSize: 16,

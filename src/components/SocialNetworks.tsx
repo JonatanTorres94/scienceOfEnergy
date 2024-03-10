@@ -33,8 +33,8 @@ export const SocialNetworks = () => {
                 <TouchableOpacity
                     onPress={() => handlePress('https://www.youtube.com/@cienciadelenergismo')}
                     style={{ flexDirection: 'row', alignContent: 'center', marginBottom: 10 }} >
-                    <Icon name='logo-youtube' size={35} color={colors.primary} />
-                    <Text style={{ color: colors.titleText, marginLeft: 5, fontSize: 18 }}>
+                    <Icon name='logo-youtube' size={48} color={colors.primary} />
+                    <Text style={{ color: colors.titleText, marginLeft: 5, fontSize: 22 }}>
                         YouTube
                     </Text>
                 </TouchableOpacity>
@@ -43,8 +43,8 @@ export const SocialNetworks = () => {
                 <TouchableOpacity
                     onPress={() => handlePress('https://www.facebook.com/cienciadelenergismo')}
                     style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
-                    <Icon name='logo-facebook' size={35} color={colors.primary} />
-                    <Text style={{ color: colors.titleText, marginLeft: 5, fontSize: 18 }}>
+                    <Icon name='logo-facebook' size={48} color={colors.primary} />
+                    <Text style={{ color: colors.titleText, marginLeft: 5, fontSize: 22 }}>
                         Facebook
                     </Text>
                 </TouchableOpacity>
@@ -52,8 +52,8 @@ export const SocialNetworks = () => {
                 <TouchableOpacity
                     onPress={() => handlePress('https://www.instagram.com/gnosiscienciadelenergismo/')}
                     style={{ flexDirection: 'row', alignContent: 'center', marginBottom: 10 }} >
-                    <Icon name='logo-instagram' size={35} color={colors.primary} />
-                    <Text style={{ color: colors.titleText, marginLeft: 5, fontSize: 18 }}>
+                    <Icon name='logo-instagram' size={48} color={colors.primary} />
+                    <Text style={{ color: colors.titleText, marginLeft: 5, fontSize: 22 }}>
                         Instagram
                     </Text>
                 </TouchableOpacity>
@@ -61,8 +61,8 @@ export const SocialNetworks = () => {
                 <TouchableOpacity
                     onPress={() => handlePress('https://www.tiktok.com/@cienciaenergismo_oficial?lang=es')}
                     style={{ flexDirection: 'row', alignContent: 'center', marginBottom: 10 }}>
-                    <Icon name='logo-tiktok' size={35} color={colors.primary} />
-                    <Text style={{ color: colors.titleText, marginLeft: 5, fontSize: 18 }}>
+                    <Icon name='logo-tiktok' size={48} color={colors.primary} />
+                    <Text style={{ color: colors.titleText, marginLeft: 5, fontSize: 22 }}>
                         TikTok
                     </Text>
                 </TouchableOpacity>

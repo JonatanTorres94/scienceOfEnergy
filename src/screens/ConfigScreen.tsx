@@ -54,7 +54,7 @@ export const ConfigScreen = () => {
   let archivos = 'Archivos descargados'
   let help = 'Ayuda'
   let report = 'Reporte de Bug'
-  let politica = 'Politica de privacidad'
+  let politica = 'Política de privacidad'
   let donacion = 'Donaciones'
   let close = 'Cerrar'
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-import ModalSelector from 'react-native-modal-selector'; // Asegúrate de que has importado correctamente ModalSelector
+import ModalSelector from 'react-native-modal-selector';
 import {
     dataForAlquimia,
     dataForAstralSplitting,
@@ -56,13 +56,13 @@ export const DailyPractices: React.FC = () => {
         'Desdoblamiento Astral': dataForAstralSplitting,
         'Astral Splitting': dataForAstralSplitting,
         'Divisão Astral': dataForAstralSplitting,
-        'Muerte En Marcha': dataForDeathInProgress,
+        'Muerte en marcha': dataForDeathInProgress,
         'Death on the march': dataForDeathInProgress,
         'Morte em marcha': dataForDeathInProgress,
         'Estudio de las Obras': dataForStudyOfTheWorks,
         'Study of the Works': dataForStudyOfTheWorks,
         'Estudo das Obras': dataForStudyOfTheWorks,
-        'Sacrificio por la Humanidad': dataForSacrificeForHumanity,
+        'Sacrificio por la humanidad': dataForSacrificeForHumanity,
         'Sacrifice for humanity': dataForSacrificeForHumanity,
         'Sacrifício pela humanidade': dataForSacrificeForHumanity
     };
@@ -80,17 +80,18 @@ export const DailyPractices: React.FC = () => {
             <View style={styles.container}>
                 <View style={styles.selectorContainer}>
                     <Text style={{ ...styles.titleModal, color: colors.titleText }}>
-                        {(language === 'Spanish') ? 'Practicas diarias:' : (language === 'English') ? 'Daily Practices:' : 'Práticas diárias:'}
+                        {(language === 'Spanish') ? 'Prácticas diarias:' : (language === 'English') ? 'Daily Practices:' : 'Práticas diárias:'}
                     </Text>
                     <ModalSelector
-                        optionTextStyle={{ color: 'red' }}
-                        //overlayStyle={{backgroundColor:'blue'}}
+                        optionTextStyle={{ color: 'blue' }}
                         data={menuItems}
                         initValue={(language === 'Spanish') ? 'seleccione una opción' : (language === 'English') ? 'select an option' : 'selecione uma opção'}
                         supportedOrientations={['landscape']}
                         accessible={true}
+                        cancelText='Cancel'
+                        cancelStyle={{height:50, alignItems:'center'}}
+                        optionStyle={{height:50}}
                         scrollViewAccessibilityLabel={'Scrollable options'}
-                        cancelButtonAccessibilityLabel={'Cancel Button'}
                         onChange={(option) => handleSelect(option)}>
                         <TextInput
                             style={styles.textInputDP}
